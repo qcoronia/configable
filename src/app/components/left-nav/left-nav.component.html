@@ -10,7 +10,7 @@
             <ul class="list-unstyled navbar__list">
                 <ng-container *ngFor="let area of $areas | async">
                     <li class="active has-sub" *ngIf="area.sections.length > 0 else noSub">
-                        <a class="js-arrow area-{{area.slug}}" (click)="dropdownClicked(area.slug)">
+                        <a class="js-arrow area-{{area.slug}}" href="javascript:void(0);" (click)="dropdownClicked(area.slug)">
                             <i class="fas fa-tachometer-alt"></i>{{area.areaName}}
                         </a>
                         <ul class="list-unstyled navbar__sub-list js-sub-list">
