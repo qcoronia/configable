@@ -25,13 +25,13 @@
                 "label": "Age",
                 "field": "age",
                 "type": "number",
-                "format": "N"
+                "format": "1.0"
               },
               {
                 "label": "Birth Date",
                 "field": "birthDate",
                 "type": "date",
-                "format": "MMM. DD, YYYY"
+                "format": "MMM. dd, yyyy"
               }
             ]
           },

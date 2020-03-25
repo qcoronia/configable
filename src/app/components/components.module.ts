@@ -8,6 +8,7 @@ import { ContentComponent } from './content/content.component';
 import { RouterModule } from '@angular/router';
 import { ListComponent } from './list/list.component';
 import { FormComponent } from './form/form.component';
+import { PipesModule } from '../pipes/pipes.module';
 
 
 
@@ -15,10 +16,11 @@ import { FormComponent } from './form/form.component';
   declarations: [LeftNavComponent, FooterComponent, HeaderComponent, HeaderMobileComponent, ContentComponent, ListComponent, FormComponent],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    PipesModule,
   ],
   providers: [],
   entryComponents: [ListComponent, FormComponent],
   exports: [LeftNavComponent, FooterComponent, HeaderComponent, HeaderMobileComponent, ContentComponent, ListComponent, FormComponent],
 })
-export class SharedModule { }
+export class ComponentsModule { }

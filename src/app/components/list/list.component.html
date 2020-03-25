@@ -10,7 +10,9 @@
               </thead>
               <tbody>
                   <tr *ngFor="let item of $data | async">
-                      <td *ngFor="let column of ($listConfig | async).columns">{{item[column.field]}}</td>
+                      <td *ngFor="let column of ($listConfig | async).columns">
+                          {{item[column.field] | format: column.type:column.format}}
+                      </td>
                   </tr>
               </tbody>
           </table>
