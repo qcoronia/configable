@@ -33,10 +33,10 @@
                 "type": "date",
                 "format": "MMM. DD, YYYY"
               }
-            ],
-            "formConfig": {
-              "controls": []
-            }
+            ]
+          },
+          "formConfig": {
+            "controls": []
           }
         }
       ]

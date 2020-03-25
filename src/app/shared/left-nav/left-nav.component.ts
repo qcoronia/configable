@@ -4,8 +4,10 @@ import { AreaInterface, ConfigInterface } from 'src/app/models';
 import { pluck, tap, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, Routes, Route } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
+import { ListComponent } from '../list/list.component';
+import { FormComponent } from '../form/form.component';
 
 @Component({
   selector: 'app-left-nav',
@@ -19,7 +21,7 @@ export class LeftNavComponent implements OnInit {
   constructor(
     private configProvider: ConfigProviderService,
     private router: Router) {
-    }
+  }
 
   ngOnInit() {
     this.$areas = this.configProvider.$config.pipe(
@@ -33,18 +35,16 @@ export class LeftNavComponent implements OnInit {
       { path: '', component: AppComponent },
       ...config.areas.map(area => ({
         path: area.slug,
-        component: AppComponent,
         children: area.sections.map(section => ({
           path: section.slug,
-          component: AppComponent,
-          childrem: [
-            { path: 'list', component: AppComponent },
-            { path: 'form', component: AppComponent },
+          children: [
+            { path: '', redirectTo: !!section.listConfig ? 'list' : 'form', pathMatch: 'full' },
+            { path: 'list', component: ListComponent, data: section.listConfig },
+            { path: 'form', component: FormComponent, data: section.formConfig },
           ],
-        })),
-      })),
-    ]);
-    console.warn(this.router.config);
+        } as Route)),
+      } as Route)),
+    ] as Routes);
   }
 
   // UI EVENTS

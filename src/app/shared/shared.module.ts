@@ -6,16 +6,18 @@ import { HeaderComponent } from './header/header.component';
 import { HeaderMobileComponent } from './header-mobile/header-mobile.component';
 import { ContentComponent } from './content/content.component';
 import { RouterModule } from '@angular/router';
+import { ListComponent } from './list/list.component';
+import { FormComponent } from './form/form.component';
 
 
 
 @NgModule({
-  declarations: [LeftNavComponent, FooterComponent, HeaderComponent, HeaderMobileComponent, ContentComponent],
+  declarations: [LeftNavComponent, FooterComponent, HeaderComponent, HeaderMobileComponent, ContentComponent, ListComponent, FormComponent],
   imports: [
     CommonModule,
     RouterModule
   ],
   providers: [],
-  exports: [LeftNavComponent, FooterComponent, HeaderComponent, HeaderMobileComponent, ContentComponent],
+  exports: [LeftNavComponent, FooterComponent, HeaderComponent, HeaderMobileComponent, ContentComponent, ListComponent, FormComponent],
 })
 export class SharedModule { }
