@@ -18,6 +18,7 @@ import { FormComponent } from './form/form.component';
     RouterModule
   ],
   providers: [],
+  entryComponents: [ListComponent, FormComponent],
   exports: [LeftNavComponent, FooterComponent, HeaderComponent, HeaderMobileComponent, ContentComponent, ListComponent, FormComponent],
 })
 export class SharedModule { }

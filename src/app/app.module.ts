@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { ConfigProviderService } from './services/config-provider.service';
 import { ServicesModule } from './services/services.module';
 
 @NgModule({
