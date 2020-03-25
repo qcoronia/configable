@@ -1,0 +1,45 @@
+{
+  "appName": "configable",
+  "areas": [
+    {
+      "areaName": "Default",
+      "slug": "default",
+      "sections": [
+        {
+          "sectionName": "Example",
+          "slug": "Example",
+          "listConfig": {
+            "idField": "id",
+            "columns": [
+              {
+                "label": "Id",
+                "field": "id",
+                "type": "string"
+              },
+              {
+                "label": "Name",
+                "field": "name",
+                "type": "string"
+              },
+              {
+                "label": "Age",
+                "field": "age",
+                "type": "number",
+                "format": "N"
+              },
+              {
+                "label": "Birth Date",
+                "field": "birthDate",
+                "type": "date",
+                "format": "MMM. DD, YYYY"
+              }
+            ],
+            "formConfig": {
+              "controls": []
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

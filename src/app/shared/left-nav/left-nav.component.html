@@ -1,0 +1,34 @@
+<!-- MENU SIDEBAR-->
+<aside class="menu-sidebar d-none d-lg-block">
+    <div class="logo">
+        <a href="#">
+            <img src="assets/images/icon/logo.png" alt="Cool Admin" />
+        </a>
+    </div>
+    <div class="menu-sidebar__content js-scrollbar1">
+        <nav class="navbar-sidebar">
+            <ul class="list-unstyled navbar__list">
+                <ng-container *ngFor="let area of $areas | async">
+                    <li class="active has-sub" *ngIf="area.sections.length > 0 else noSub">
+                        <a class="js-arrow area-{{area.slug}}" href="#" (click)="dropdownClicked(area.slug)">
+                            <i class="fas fa-tachometer-alt"></i>{{area.areaName}}
+                        </a>
+                        <ul class="list-unstyled navbar__sub-list js-sub-list">
+                            <li *ngFor="let section of area.sections">
+                                <a href="{{section.slug}}">{{section.sectionName}}</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <ng-template #noSub>
+                        <li>
+                            <a href="{{area.slug}}">
+                                <i class="fas fa-chart-bar"></i>{{area.areaName}}
+                            </a>
+                        </li>
+                    </ng-template>
+                </ng-container>
+            </ul>
+        </nav>
+    </div>
+</aside>
+<!-- END MENU SIDEBAR-->
