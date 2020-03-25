@@ -15,13 +15,13 @@
                         </a>
                         <ul class="list-unstyled navbar__sub-list js-sub-list">
                             <li *ngFor="let section of area.sections">
-                                <a href="{{section.slug}}">{{section.sectionName}}</a>
+                                <a [routerLink]="[area.slug, section.slug]">{{section.sectionName}}</a>
                             </li>
                         </ul>
                     </li>
                     <ng-template #noSub>
                         <li>
-                            <a href="{{area.slug}}">
+                            <a [routerLink]="[area.slug]">
                                 <i class="fas fa-chart-bar"></i>{{area.areaName}}
                             </a>
                         </li>

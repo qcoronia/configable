@@ -1,9 +1,11 @@
 import { Component, OnInit, Inject, ElementRef, AfterViewInit } from '@angular/core';
 import { ConfigProviderService } from 'src/app/services/config-provider.service';
 import { AreaInterface, ConfigInterface } from 'src/app/models';
-import { pluck, tap } from 'rxjs/operators';
+import { pluck, tap, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-left-nav',
@@ -14,16 +16,38 @@ export class LeftNavComponent implements OnInit {
 
   private $areas: Observable<AreaInterface[]>;
 
-  constructor(private http: HttpClient
-    // @Inject(ConfigProviderService) private configProvider: ConfigProviderService,
-    ) { }
+  constructor(
+    private configProvider: ConfigProviderService,
+    private router: Router) {
+    }
 
   ngOnInit() {
-    this.$areas = this.http.get<ConfigInterface>(`assets/configs/default.json`).pipe(
-      pluck("areas"),
-      tap(console.warn),
+    this.$areas = this.configProvider.$config.pipe(
+      tap(config => this.refreshRoutes(config)),
+      map(config => config.areas),
     );
   }
+
+  public refreshRoutes(config: ConfigInterface) {
+    this.router.resetConfig([
+      { path: '', component: AppComponent },
+      ...config.areas.map(area => ({
+        path: area.slug,
+        component: AppComponent,
+        children: area.sections.map(section => ({
+          path: section.slug,
+          component: AppComponent,
+          childrem: [
+            { path: 'list', component: AppComponent },
+            { path: 'form', component: AppComponent },
+          ],
+        })),
+      })),
+    ]);
+    console.warn(this.router.config);
+  }
+
+  // UI EVENTS
 
   public dropdownClicked(slug: string) {
     const dropdowns = document.getElementsByClassName('js-arrow');

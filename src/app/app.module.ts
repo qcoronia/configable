@@ -7,6 +7,7 @@ import { SharedModule } from './shared/shared.module';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ConfigProviderService } from './services/config-provider.service';
+import { ServicesModule } from './services/services.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,8 +18,10 @@ import { ConfigProviderService } from './services/config-provider.service';
     HttpClientModule,
 
     SharedModule,
+
+    ServicesModule.forRoot(),
   ],
-  providers: [ConfigProviderService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

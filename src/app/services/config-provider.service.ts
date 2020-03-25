@@ -15,7 +15,7 @@ export class ConfigProviderService {
     this.$config = new ReplaySubject<ConfigInterface>(1);
     this.http.get<ConfigInterface>(`assets/configs/default.json`).pipe(
       tap(res => this.$config.next(res))
-    );
+    ).subscribe(res => { });
   }
 
 

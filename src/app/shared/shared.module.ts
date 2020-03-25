@@ -5,13 +5,15 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { HeaderMobileComponent } from './header-mobile/header-mobile.component';
 import { ContentComponent } from './content/content.component';
+import { RouterModule } from '@angular/router';
 
 
 
 @NgModule({
   declarations: [LeftNavComponent, FooterComponent, HeaderComponent, HeaderMobileComponent, ContentComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   providers: [],
   exports: [LeftNavComponent, FooterComponent, HeaderComponent, HeaderMobileComponent, ContentComponent],

@@ -7,7 +7,7 @@
       "sections": [
         {
           "sectionName": "Example",
-          "slug": "Example",
+          "slug": "example",
           "listConfig": {
             "idField": "id",
             "columns": [
