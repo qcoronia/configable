@@ -6,3 +6,4 @@ export * from './form-config.interface';
 export * from './list-config.interface';
 export * from './section.interface';
 export * from './value.type';
+export * from './control.type';

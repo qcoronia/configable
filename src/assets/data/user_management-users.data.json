@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Sample 1",
+    "age": 12,
+    "birthDate": "1964-02-27T00:00:00"
+  },
+  {
+    "id": 2,
+    "name": "Sample 2",
+    "age": 63,
+    "birthDate": "1972-11-17T00:00:00"
+  },
+  {
+    "id": 3,
+    "name": "Sample 3",
+    "age": 24,
+    "birthDate": "1994-06-27T00:00:00"
+  },
+  {
+    "id": 4,
+    "name": "Sample 4",
+    "age": 37,
+    "birthDate": "1994-08-22T00:00:00"
+  }
+]

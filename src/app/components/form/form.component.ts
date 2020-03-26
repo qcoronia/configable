@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormConfigInterface } from 'src/app/models';
+import { ReplaySubject } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormComponent implements OnInit {
 
-  constructor() { }
+  public $formConfig: ReplaySubject<FormConfigInterface>;
+  public $data: ReplaySubject<FormData>;
+
+  constructor(
+    private route: ActivatedRoute) {
+    this.$formConfig = new ReplaySubject<FormConfigInterface>(1);
+    this.$formConfig.next(this.route.snapshot.data as FormConfigInterface);
+    this.$data = new ReplaySubject<FormData>(1);
+  }
 
   ngOnInit() {
   }
 
+}
+
+export class FormData {
+  [key: string]: any;
 }
