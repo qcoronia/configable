@@ -35,14 +35,17 @@ export class LeftNavComponent implements OnInit {
       { path: '', component: AppComponent },
       ...config.areas.map(area => ({
         path: area.slug,
-        children: area.sections.map(section => ({
-          path: section.slug,
-          children: [
-            { path: '', redirectTo: !!section.listConfig ? 'list' : 'form', pathMatch: 'full' },
-            { path: 'list', component: ListComponent, data: section.listConfig },
-            { path: 'form', component: FormComponent, data: section.formConfig },
-          ],
-        } as Route)),
+        children: [
+          { path: '', redirectTo: '../', pathMatch: 'full' },
+          ...area.sections.map(section => ({
+            path: section.slug,
+            children: [
+              { path: '', redirectTo: !!section.listConfig ? 'list' : 'form', pathMatch: 'full' },
+              { path: 'list', component: ListComponent, data: section.listConfig },
+              { path: 'form', component: FormComponent, data: section.formConfig },
+            ],
+          } as Route))
+        ],
       } as Route)),
     ] as Routes);
   }
