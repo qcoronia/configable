@@ -1,0 +1,12 @@
+{
+  "appName":  "Configable",
+  "areas": [
+    {
+      "areaName": "Elements",
+      "alias": "elements",
+      "sections":  [
+
+      ]
+    }
+  ]
+}
