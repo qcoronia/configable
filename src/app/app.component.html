@@ -1,16 +1,5 @@
-<div class="page-wrapper">
-    <app-header-mobile></app-header-mobile>
-
-    <app-left-nav></app-left-nav>
-
-    <!-- PAGE CONTAINER-->
-    <div class="page-container">
-        <app-header></app-header>
-
-        <app-content>
-            <router-outlet></router-outlet>
-        </app-content>
-    </div>
-    <!-- END PAGE CONTAINER-->
-
-</div>
+<app-navigation>
+  <div class="main-content">
+    <router-outlet></router-outlet>
+  </div>
+</app-navigation>

@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
+import { TableComponent } from './table/table.component';
 
 
-export const defaultRoutes: Routes = [
+const routes: Routes = [
+  { path: '', component: TableComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(defaultRoutes)],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

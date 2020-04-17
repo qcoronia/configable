@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1,
+  "version": 1, 
   "newProjectRoot": "projects",
   "projects": {
     "configable": {
@@ -22,7 +22,7 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -30,25 +30,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [
-              "src/assets/vendor/jquery-3.2.1.min.js",
-
-              "src/assets/vendor/bootstrap-4.1/popper.min.js",
-              "src/assets/vendor/bootstrap-4.1/bootstrap.min.js",
-
-              "src/assets/vendor/slick/slick.min.js",
-              "src/assets/vendor/wow/wow.min.js",
-              "src/assets/vendor/animsition/animsition.min.js",
-              "src/assets/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js",
-              "src/assets/vendor/counter-up/jquery.waypoints.min.js",
-              "src/assets/vendor/counter-up/jquery.counterup.min.js",
-              "src/assets/vendor/circle-progress/circle-progress.min.js",
-              "src/assets/vendor/perfect-scrollbar/perfect-scrollbar.js",
-              "src/assets/vendor/chartjs/Chart.bundle.min.js",
-              "src/assets/vendor/select2/select2.min.js",
-
-              "src/assets/js/main.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -63,7 +45,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -108,8 +89,7 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              "src/assets/configs/default.json"
+              "src/assets"
             ],
             "styles": [
               "src/styles.scss"
@@ -140,41 +120,6 @@
             "production": {
               "devServerTarget": "configable:serve:production"
             }
-          }
-        }
-      }
-    },
-    "libtest": {
-      "projectType": "library",
-      "root": "projects/libtest",
-      "sourceRoot": "projects/libtest/src",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "projects/libtest/tsconfig.lib.json",
-            "project": "projects/libtest/ng-package.json"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/libtest/src/test.ts",
-            "tsConfig": "projects/libtest/tsconfig.spec.json",
-            "karmaConfig": "projects/libtest/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/libtest/tsconfig.lib.json",
-              "projects/libtest/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
           }
         }
       }
