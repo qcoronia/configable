@@ -3,18 +3,18 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
+    <mat-toolbar>{{appName$ | async}}</mat-toolbar>
     <mat-nav-list>
       <mat-accordion>
-        <mat-expansion-panel>
+        <mat-expansion-panel *ngFor="let area of areas$ | async">
           <mat-expansion-panel-header>
             <mat-panel-title>
-              Links
+              {{area.areaName}}
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <a mat-list-item href="#">Link 1</a>
-          <a mat-list-item href="#">Link 2</a>
-          <a mat-list-item href="#">Link 3</a>
+          <ng-container *ngFor="let section of area.sections">
+            <a mat-list-item [routerLink]="[area.alias, section.alias]">{{section.sectionName}}</a>
+          </ng-container>
         </mat-expansion-panel>
         <mat-expansion-panel>
           <mat-expansion-panel-header>
@@ -49,7 +49,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>configable</span>
+      <span>{{(appStateService.state$ | async).headerName}}</span>
     </mat-toolbar>
     <ng-content></ng-content>
   </mat-sidenav-content>

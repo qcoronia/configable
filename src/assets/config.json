@@ -2,10 +2,30 @@
   "appName":  "Configable",
   "areas": [
     {
-      "areaName": "Elements",
-      "alias": "elements",
+      "areaName": "Sample Pages",
+      "alias": "sample-pages",
       "sections":  [
-
+        {
+          "sectionName": "Elements",
+          "alias": "elements",
+          "list":  {
+            "listName": "Elements",
+            "dataSourceUrl": "assets/elements.data.json",
+            "columns": [
+              {
+                "columnName": "Id",
+                "alias": "id",
+                "dataType": "number"
+              },
+              {
+                "columnName": "Name",
+                "alias": "name",
+                "dataType": "string"
+              }
+            ]
+          },
+          "form":  {}
+        }
       ]
     }
   ]
