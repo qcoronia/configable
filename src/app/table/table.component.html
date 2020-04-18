@@ -8,7 +8,7 @@
     <ng-container matColumnDef="action.view">
       <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
       <td mat-cell *matCellDef="let row" width="60">
-        <a mat-button [routerLink]="['../', 'form', row[listConfig.idAlias]]">View</a>
+        <a mat-button [routerLink]="['../', 'form', { id: row[listConfig.idAlias] }]">View</a>
       </td>
     </ng-container>
 
