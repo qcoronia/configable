@@ -11,6 +11,7 @@
           "list":  {
             "listName": "Elements",
             "dataSourceUrl": "assets/elements.data.json",
+            "idAlias": "id",
             "columns": [
               {
                 "columnName": "Id",

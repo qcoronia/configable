@@ -60,6 +60,7 @@ export class RoutingService implements OnDestroy {
         { path: '', redirectTo: !!section.list ? 'list' : 'form', pathMatch: 'full' },
         { path: 'list', component: TableComponent, data: section.list },
         { path: 'form', component: FormComponent, data: section.form },
+        { path: 'form/:id', component: FormComponent, data: section.form },
       ],
     } as Route;
   }

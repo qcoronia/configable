@@ -23,6 +23,7 @@ export class TableComponent implements AfterViewInit, OnInit {
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   public displayedColumns = ['id', 'name'];
+  public actionColumns = ['action.view'];
 
   public listConfig: ListInterface;
 
@@ -31,14 +32,16 @@ export class TableComponent implements AfterViewInit, OnInit {
     private appStateService: AppStateService,
     private http: HttpClient) {
     this.listConfig = this.route.snapshot.data as ListInterface;
-    this.displayedColumns = this.listConfig.columns.map(col => col.alias);
+    this.displayedColumns = this.listConfig.columns
+      .map(col => col.alias)
+      .concat(this.actionColumns);
     this.appStateService.set({
       headerName: this.listConfig.listName,
     });
   }
 
   ngOnInit() {
-    const dataSourceRequest$ = this.http.get<TableItem>(this.listConfig.dataSourceUrl, {
+    const dataSourceRequest$ = this.http.get<TableItem[]>(this.listConfig.dataSourceUrl, {
       observe: 'body',
       responseType: 'json'
     }).pipe(

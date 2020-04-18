@@ -1,8 +1,8 @@
 import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { map, distinctUntilChanged, tap } from 'rxjs/operators';
-import { Observable, of as observableOf, merge, Subscription } from 'rxjs';
+import { map, distinctUntilChanged, tap, switchMap } from 'rxjs/operators';
+import { Observable, of as observableOf, merge, Subscription, iif } from 'rxjs';
 
 // TODO: Replace this with your own data model type
 export interface TableItem {
@@ -43,9 +43,9 @@ export class TableDataSource extends DataSource<TableItem> {
   paginator: MatPaginator;
   sort: MatSort;
 
-  private dataSourceRequest$: Observable<TableItem>;
+  private dataSourceRequest$: Observable<TableItem[]>;
 
-  constructor(dataSource: Observable<TableItem>) {
+  constructor(dataSource: Observable<TableItem[]>) {
     super();
     this.dataSourceRequest$ = dataSource.pipe(
       distinctUntilChanged()
@@ -67,9 +67,15 @@ export class TableDataSource extends DataSource<TableItem> {
     ];
 
 
-    return merge(...dataMutations).pipe(tap(console.table),map(data => {
-      return this.getPagedData(this.getSortedData([...data]));
-    }));
+    return merge(...dataMutations).pipe(
+      map(data => {
+        if (Array.isArray(data)) {
+          return this.getPagedData(this.getSortedData([...data]));
+        } else {
+          return data;
+        }
+      }),
+    );
   }
 
   /**
