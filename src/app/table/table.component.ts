@@ -8,6 +8,7 @@ import { Router, Route, ActivatedRoute } from '@angular/router';
 import { SectionInterface } from '../core/models/section.interface';
 import { AppStateService } from '../core/app-state/app-state.service';
 import { ListInterface } from '../core/models/list.interface';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-table',
@@ -23,11 +24,12 @@ export class TableComponent implements AfterViewInit, OnInit {
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   public displayedColumns = ['id', 'name'];
 
-  private listConfig: ListInterface;
+  public listConfig: ListInterface;
 
   constructor(
     private route: ActivatedRoute,
-    private appStateService: AppStateService) {
+    private appStateService: AppStateService,
+    private http: HttpClient) {
     this.listConfig = this.route.snapshot.data as ListInterface;
     this.displayedColumns = this.listConfig.columns.map(col => col.alias);
     this.appStateService.set({
@@ -36,7 +38,12 @@ export class TableComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit() {
-    this.dataSource = new TableDataSource();
+    const dataSourceRequest$ = this.http.get<TableItem>(this.listConfig.dataSourceUrl, {
+      observe: 'body',
+      responseType: 'json'
+    }).pipe(
+    );
+    this.dataSource = new TableDataSource(dataSourceRequest$);
   }
 
   ngAfterViewInit() {

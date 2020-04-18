@@ -33,6 +33,7 @@ export class RoutingService implements OnDestroy {
   public refreshRoutes(config: ConfigInterface) {
     const routes = this.buildRouteFromConfig(config);
     this.router.resetConfig(routes);
+    this.router.initialNavigation();
   }
 
   private buildRouteFromConfig(config: ConfigInterface): Routes {

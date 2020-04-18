@@ -35,7 +35,7 @@ export class NavigationComponent {
     private breakpointObserver: BreakpointObserver,
     private configService: ConfigService,
     private routingService: RoutingService,
-    private appStateService: AppStateService) {
+    public appStateService: AppStateService) {
   }
 
 }
