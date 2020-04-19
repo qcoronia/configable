@@ -4,12 +4,14 @@ import { CommonModule } from '@angular/common';
 import { ConfigService } from './configuration/config.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AppStateService } from './app-state/app-state.service';
+import { ApiService } from './api/api.service';
 
 
 @NgModule({
   declarations: [
     ConfigService,
-    AppStateService
+    AppStateService,
+    ApiService
   ],
   imports: [
     CommonModule,
@@ -17,7 +19,8 @@ import { AppStateService } from './app-state/app-state.service';
   ],
   exports: [
     ConfigService,
-    AppStateService
-  ],
+    AppStateService,
+    ApiService
+  ]
 })
 export class CoreModule { }

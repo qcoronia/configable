@@ -1,3 +1,15 @@
-<div class="mat-elevation-z8">
-  <p>form works!</p>
+<div class="mat-elevation-z8 padded-form">
+  <form class="form" [formGroup]="form" (ngSubmit)="formSubmit()">
+    <ng-container *ngFor="let formControl of formConfig.formControls">
+      <mat-form-field class="full-width">
+        <mat-label>{{formControl.fieldName}}</mat-label>
+        <input matInput placeholder="" [formControlName]="formControl.alias">
+      </mat-form-field>
+    </ng-container>
+    <mat-divider></mat-divider>
+    <div class="form-action-buttons">
+      <button mat-raised-button color="primary" type="submit">Save</button>
+      <button mat-raised-button type="button" [routerLink]="['../list']">Cancel</button>
+    </div>
+  </form>
 </div>

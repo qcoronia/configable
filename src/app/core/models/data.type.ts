@@ -1,1 +1,1 @@
-export type DataType = 'string' | 'number' | 'boolean' | 'Date';
+export type DataType = 'string' | 'number' | 'boolean' | 'date';

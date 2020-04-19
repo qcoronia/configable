@@ -9,6 +9,7 @@ import { SectionInterface } from '../core/models/section.interface';
 import { AppStateService } from '../core/app-state/app-state.service';
 import { ListInterface } from '../core/models/list.interface';
 import { HttpClient } from '@angular/common/http';
+import { ApiService } from '../core/api/api.service';
 
 @Component({
   selector: 'app-table',
@@ -30,7 +31,7 @@ export class TableComponent implements AfterViewInit, OnInit {
   constructor(
     private route: ActivatedRoute,
     private appStateService: AppStateService,
-    private http: HttpClient) {
+    private api: ApiService) {
     this.listConfig = this.route.snapshot.data as ListInterface;
     this.displayedColumns = this.listConfig.columns
       .map(col => col.alias)
@@ -41,11 +42,7 @@ export class TableComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit() {
-    const dataSourceRequest$ = this.http.get<TableItem[]>(this.listConfig.dataSourceUrl, {
-      observe: 'body',
-      responseType: 'json'
-    }).pipe(
-    );
+    const dataSourceRequest$ = this.api.get<TableItem[]>(this.listConfig.dataSourceUrl);
     this.dataSource = new TableDataSource(dataSourceRequest$);
   }
 

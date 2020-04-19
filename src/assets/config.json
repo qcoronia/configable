@@ -1,5 +1,6 @@
 {
   "appName":  "Configable",
+  "apiUrl": "http://localhost:3000",
   "areas": [
     {
       "areaName": "Sample Pages",
@@ -10,7 +11,7 @@
           "alias": "elements",
           "list":  {
             "listName": "Elements",
-            "dataSourceUrl": "assets/elements.data.json",
+            "dataSourceUrl": "/elements",
             "idAlias": "id",
             "columns": [
               {
@@ -25,7 +26,27 @@
               }
             ]
           },
-          "form":  {}
+          "form":  {
+            "formName": "Element Form",
+            "dataSourceUrl": "/elements/:id",
+            "createUrl": "/elements",
+            "updateUrl": "/elements/:id",
+            "idAlias": "id",
+            "formControls": [
+              {
+                "fieldName": "Id",
+                "alias": "id",
+                "isReadOnly": true,
+                "dataType": "number"
+              },
+              {
+                "fieldName": "Name",
+                "alias": "name",
+                "isReadOnly": false,
+                "dataType": "string"
+              }
+            ]
+          }
         }
       ]
     }

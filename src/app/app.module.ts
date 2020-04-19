@@ -19,6 +19,10 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { FormComponent } from './form/form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -34,6 +38,8 @@ import { FormComponent } from './form/form.component';
     HttpClientModule,
     BrowserAnimationsModule,
     LayoutModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
@@ -43,6 +49,9 @@ import { FormComponent } from './form/form.component';
     MatPaginatorModule,
     MatSortModule,
     MatExpansionModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
