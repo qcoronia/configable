@@ -1,5 +1,5 @@
 <div class="mat-elevation-z8 padded-form">
-  <form class="form" [formGroup]="form" (ngSubmit)="formSubmit()">
+  <form [formGroup]="form" (submit)="submitForm()">
     <ng-container *ngFor="let formControl of formConfig.formControls">
       <mat-form-field class="full-width">
         <mat-label>{{formControl.fieldName}}</mat-label>

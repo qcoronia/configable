@@ -28,9 +28,9 @@
           },
           "form":  {
             "formName": "Element Form",
-            "dataSourceUrl": "/elements/:id",
+            "dataSourceUrl": "/elements/{id}",
             "createUrl": "/elements",
-            "updateUrl": "/elements/:id",
+            "updateUrl": "/elements/{id}",
             "idAlias": "id",
             "formControls": [
               {
