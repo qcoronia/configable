@@ -14,6 +14,8 @@ import { of, iif, from } from 'rxjs';
 })
 export class FormComponent implements OnInit {
 
+  public isCreateMode: boolean;
+
   public formConfig: FormInterface;
 
   public form: FormGroup;
@@ -24,6 +26,8 @@ export class FormComponent implements OnInit {
     private appStateService: AppStateService,
     private api: ApiService,
     private formBuilder: FormBuilder) {
+    this.isCreateMode = true;
+
     this.formConfig = this.route.snapshot.data as FormInterface;
     this.appStateService.set({
       headerName: this.formConfig.formName,
@@ -36,12 +40,20 @@ export class FormComponent implements OnInit {
 
     this.form = this.formBuilder.group(formSchema);
 
-    for (var formControl of this.formConfig.formControls.filter(e => e.isReadOnly)) {
-      this.form.get(formControl.alias).disable();
+    if (!this.isCreateMode) {
+      for (var formControl of this.formConfig.formControls.filter(e => e.isReadOnly)) {
+        this.form.get(formControl.alias).disable();
+      }
     }
   }
 
   ngOnInit(): void {
+    if (!this.route.snapshot.params.id) {
+      return;
+    }
+
+    this.isCreateMode = false;
+
     const dataSourceUrl = this.formConfig.dataSourceUrl
       .replace(`{${this.formConfig.idAlias}}`, this.route.snapshot.params.id);
     this.api.get<FormData>(dataSourceUrl).pipe(
@@ -54,7 +66,7 @@ export class FormComponent implements OnInit {
     console.warn('asdasd');
     of(this.form.getRawValue()).pipe(
       switchMap(formValue => {
-        if (!this.route.snapshot.params.id) {
+        if (this.isCreateMode) {
           return this.api.post(this.formConfig.createUrl, formValue);
         } else {
           return this.api.put(this.formConfig.updateUrl
