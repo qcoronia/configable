@@ -2,7 +2,7 @@ import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map, distinctUntilChanged, tap, switchMap } from 'rxjs/operators';
-import { Observable, of as observableOf, merge, Subscription, iif } from 'rxjs';
+import { Observable, of as observableOf, merge, Subscription, iif, ReplaySubject, BehaviorSubject } from 'rxjs';
 import { ListInterface } from '../core/models/list.interface';
 
 // TODO: Replace this with your own data model type
@@ -22,16 +22,26 @@ export class TableDataSource extends DataSource<TableItem> {
 
   private dataSourceRequest$: Observable<TableItem[]>;
   private listConfig: ListInterface;
+  private filter$: BehaviorSubject<FilterContext>;
 
   constructor(dataSource: Observable<TableItem[]>) {
     super();
     this.dataSourceRequest$ = dataSource.pipe(
       distinctUntilChanged()
     );
+    this.filter$ = new BehaviorSubject<FilterContext>({
+      filterValue: '',
+    });
   }
 
   public setListConfig(listConfig: ListInterface) {
     this.listConfig = listConfig;
+  }
+
+  public setFilter(filterValue: string) {
+    this.filter$.next({
+      filterValue: filterValue,
+    });
   }
 
   /**
@@ -45,7 +55,8 @@ export class TableDataSource extends DataSource<TableItem> {
     const dataMutations = [
       this.dataSourceRequest$,
       this.paginator.page,
-      this.sort.sortChange
+      this.sort.sortChange,
+      this.filter$,
     ];
 
     return merge(...dataMutations).pipe(
@@ -54,7 +65,8 @@ export class TableDataSource extends DataSource<TableItem> {
           this.data = [...data];
         }
 
-        const sortedData = this.getSortedData([...this.data]);
+        const filteredData = this.getFilteredData(this.filter$.value.filterValue, [...this.data]);
+        const sortedData = this.getSortedData(filteredData);
         const pagedData = this.getPagedData(sortedData);
         return pagedData;
       }),
@@ -66,6 +78,14 @@ export class TableDataSource extends DataSource<TableItem> {
    * any open connections or free any held resources that were set up during connect.
    */
   disconnect() {}
+
+  /**
+   * Filter the data (client-side). If you're using server-side filtering,
+   * this would be replaced by requesting the appropriate data from the server.
+   */
+  private getFilteredData(filterValue: string, data: TableItem[]) {
+    return data.filter(e => Object.values(e).join('').includes(filterValue));
+  }
 
   /**
    * Paginate the data (client-side). If you're using server-side pagination,
@@ -105,4 +125,8 @@ export class TableDataSource extends DataSource<TableItem> {
 /** Simple sort comparator for example ID/Name columns (for client-side sorting). */
 function compare(a: string | number, b: string | number, isAsc: boolean) {
   return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+}
+
+interface FilterContext {
+  filterValue: string;
 }

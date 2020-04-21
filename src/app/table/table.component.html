@@ -1,3 +1,13 @@
+<div class="toolbar">
+  <mat-form-field class="full-width">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="">
+  </mat-form-field>
+  <span class="toolbar-spacer"></span>
+  <div class="toolbar-actions">
+    <button mat-raised-button color="primary"><mat-icon>add</mat-icon>New</button>
+  </div>
+</div>
 <div class="mat-elevation-z8">
   <table mat-table class="full-width-table" matSort aria-label="Elements">
     <ng-container [matColumnDef]="column.alias" *ngFor="let column of listConfig.columns">

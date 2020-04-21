@@ -52,4 +52,9 @@ export class TableComponent implements AfterViewInit, OnInit {
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
   }
+
+  public applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.setFilter(filterValue.trim().toLowerCase());
+  }
 }
