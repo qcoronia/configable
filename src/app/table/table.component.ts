@@ -44,6 +44,7 @@ export class TableComponent implements AfterViewInit, OnInit {
   ngOnInit() {
     const dataSourceRequest$ = this.api.get<TableItem[]>(this.listConfig.dataSourceUrl);
     this.dataSource = new TableDataSource(dataSourceRequest$);
+    this.dataSource.setListConfig(this.listConfig);
   }
 
   ngAfterViewInit() {

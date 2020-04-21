@@ -3,35 +3,12 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map, distinctUntilChanged, tap, switchMap } from 'rxjs/operators';
 import { Observable, of as observableOf, merge, Subscription, iif } from 'rxjs';
+import { ListInterface } from '../core/models/list.interface';
 
 // TODO: Replace this with your own data model type
 export interface TableItem {
   [key: string]: any;
 }
-
-// TODO: replace this with real data from your application
-//const EXAMPLE_DATA: TableItem[] = [
-//  {id: 1, name: 'Hydrogen'},
-//  {id: 2, name: 'Helium'},
-//  {id: 3, name: 'Lithium'},
-//  {id: 4, name: 'Beryllium'},
-//  {id: 5, name: 'Boron'},
-//  {id: 6, name: 'Carbon'},
-//  {id: 7, name: 'Nitrogen'},
-//  {id: 8, name: 'Oxygen'},
-//  {id: 9, name: 'Fluorine'},
-//  {id: 10, name: 'Neon'},
-//  {id: 11, name: 'Sodium'},
-//  {id: 12, name: 'Magnesium'},
-//  {id: 13, name: 'Aluminum'},
-//  {id: 14, name: 'Silicon'},
-//  {id: 15, name: 'Phosphorus'},
-//  {id: 16, name: 'Sulfur'},
-//  {id: 17, name: 'Chlorine'},
-//  {id: 18, name: 'Argon'},
-//  {id: 19, name: 'Potassium'},
-//  {id: 20, name: 'Calcium'},
-//];
 
 /**
  * Data source for the Table view. This class should
@@ -44,12 +21,17 @@ export class TableDataSource extends DataSource<TableItem> {
   sort: MatSort;
 
   private dataSourceRequest$: Observable<TableItem[]>;
+  private listConfig: ListInterface;
 
   constructor(dataSource: Observable<TableItem[]>) {
     super();
     this.dataSourceRequest$ = dataSource.pipe(
       distinctUntilChanged()
     );
+  }
+
+  public setListConfig(listConfig: ListInterface) {
+    this.listConfig = listConfig;
   }
 
   /**
@@ -66,14 +48,15 @@ export class TableDataSource extends DataSource<TableItem> {
       this.sort.sortChange
     ];
 
-
     return merge(...dataMutations).pipe(
       map(data => {
         if (Array.isArray(data)) {
-          return this.getPagedData(this.getSortedData([...data]));
-        } else {
-          return data;
+          this.data = [...data];
         }
+
+        const sortedData = this.getSortedData([...this.data]);
+        const pagedData = this.getPagedData(sortedData);
+        return pagedData;
       }),
     );
   }
@@ -104,9 +87,15 @@ export class TableDataSource extends DataSource<TableItem> {
 
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
-      switch (this.sort.active) {
-        case 'name': return compare(a.name, b.name, isAsc);
-        case 'id': return compare(+a.id, +b.id, isAsc);
+      const column = this.listConfig.columns
+        .find(e => e.alias === this.sort.active);
+      const aVal = a[this.sort.active];
+      const bVal = b[this.sort.active];
+      switch (column.dataType) {
+        case 'string': return compare(aVal, bVal, isAsc);
+        case 'number': return compare(+aVal, +bVal, isAsc);
+        case 'boolean': return compare(!!aVal ? 1 : 0, !!bVal ? 1 : 0, isAsc);
+        case 'date': return compare(aVal, bVal, isAsc);
         default: return 0;
       }
     });
