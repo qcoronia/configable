@@ -49,4 +49,14 @@ export class ApiService {
       retry(3),
     );
   }
+
+  public delete(route: string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}${route}`, {
+      observe: 'body',
+      responseType: 'json'
+    }).pipe(
+      timeout(3000),
+      retry(3),
+    );
+  }
 }

@@ -1,6 +1,7 @@
 {
   "appName":  "Configable",
   "apiUrl": "http://localhost:3000",
+  "authUrl": "http://localhost:3000",
   "areas": [
     {
       "areaName": "Sample Pages",
@@ -12,6 +13,7 @@
           "list":  {
             "listName": "Elements",
             "dataSourceUrl": "/elements",
+            "deleteUrl": "/elements/{id}",
             "idAlias": "id",
             "columns": [
               {

@@ -23,6 +23,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SigninComponent } from './signin/signin.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     NavigationComponent,
     HomeComponent,
     TableComponent,
-    FormComponent
+    FormComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +57,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatInputModule,
     MatFormFieldModule,
     MatGridListModule,
+    MatCheckboxModule,
+    MatSnackBarModule,
+    MatMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

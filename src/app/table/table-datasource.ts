@@ -2,7 +2,7 @@ import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map, distinctUntilChanged, tap, switchMap } from 'rxjs/operators';
-import { Observable, of as observableOf, merge, Subscription, iif, ReplaySubject, BehaviorSubject } from 'rxjs';
+import { Observable, of as observableOf, merge, Subscription, iif, ReplaySubject, BehaviorSubject, Subject } from 'rxjs';
 import { ListInterface } from '../core/models/list.interface';
 
 // TODO: Replace this with your own data model type
@@ -20,6 +20,8 @@ export class TableDataSource extends DataSource<TableItem> {
   paginator: MatPaginator;
   sort: MatSort;
 
+  public dataChanged: (data: TableItem[]) => void;
+
   private dataSourceRequest$: Observable<TableItem[]>;
   private listConfig: ListInterface;
   private filter$: BehaviorSubject<FilterContext>;
@@ -32,6 +34,7 @@ export class TableDataSource extends DataSource<TableItem> {
     this.filter$ = new BehaviorSubject<FilterContext>({
       filterValue: '',
     });
+    this.dataChanged = (data: TableItem[]) => { };
   }
 
   public setListConfig(listConfig: ListInterface) {
@@ -70,6 +73,7 @@ export class TableDataSource extends DataSource<TableItem> {
         const pagedData = this.getPagedData(sortedData);
         return pagedData;
       }),
+      tap(pagedData => this.dataChanged(pagedData))
     );
   }
 

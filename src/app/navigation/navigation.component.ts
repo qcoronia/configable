@@ -6,6 +6,7 @@ import { ConfigService } from '../core/configuration/config.service';
 import { AreaInterface } from '../core/models/area.interface';
 import { RoutingService } from '../core/routing/routing.service';
 import { AppStateService } from '../core/app-state/app-state.service';
+import { AuthService } from '../core/auth/auth.service';
 
 @Component({
   selector: 'app-navigation',
@@ -35,6 +36,7 @@ export class NavigationComponent {
     private breakpointObserver: BreakpointObserver,
     private configService: ConfigService,
     private routingService: RoutingService,
+    public authService: AuthService,
     public appStateService: AppStateService) {
   }
 

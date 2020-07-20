@@ -6,36 +6,18 @@
     <mat-toolbar>{{appName$ | async}}</mat-toolbar>
     <mat-nav-list>
       <mat-accordion>
-        <mat-expansion-panel *ngFor="let area of areas$ | async">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              {{area.areaName}}
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <ng-container *ngFor="let section of area.sections">
-            <a mat-list-item [routerLink]="[area.alias, section.alias]">{{section.sectionName}}</a>
-          </ng-container>
-        </mat-expansion-panel>
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Links
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <a mat-list-item href="#">Link 1</a>
-          <a mat-list-item href="#">Link 2</a>
-          <a mat-list-item href="#">Link 3</a>
-        </mat-expansion-panel>
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Links
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <a mat-list-item href="#">Link 1</a>
-          <a mat-list-item href="#">Link 2</a>
-          <a mat-list-item href="#">Link 3</a>
-        </mat-expansion-panel>
+        <ng-template *ngIf="authService.isSignedIn$ | async">
+          <mat-expansion-panel *ngFor="let area of areas$ | async">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{area.areaName}}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ng-container *ngFor="let section of area.sections">
+              <a mat-list-item [routerLink]="[area.alias, section.alias]">{{section.sectionName}}</a>
+            </ng-container>
+          </mat-expansion-panel>
+        </ng-template>
       </mat-accordion>
     </mat-nav-list>
   </mat-sidenav>
@@ -50,6 +32,19 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>{{(appStateService.state$ | async).headerName}}</span>
+      <span class="toolbar-spacer"></span>
+      <div class="toolbar-actions">
+        <ng-container *ngIf="authService.isSignedIn$ | async else signInButton">
+          <button mat-button [matMenuTriggerFor]="profileMenu">{{authService.userDisplayName$ | async}}</button>
+            <mat-menu #profileMenu="matMenu">
+              <button mat-menu-item>Item 1</button>
+              <button mat-menu-item>Item 2</button>
+            </mat-menu>
+        </ng-container>
+        <ng-template #signInButton>
+          <button mat-button [routerLink]="['sign-in']">Sign in</button>
+        </ng-template>
+      </div>
     </mat-toolbar>
     <ng-content></ng-content>
   </mat-sidenav-content>

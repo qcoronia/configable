@@ -10,6 +10,15 @@ import { SectionInterface } from '../models/section.interface';
 import { HomeComponent } from '../../home/home.component';
 import { FormComponent } from '../../form/form.component';
 import { ReplaySubject, Subscription } from 'rxjs';
+import { AuthGuard } from '../auth/auth.guard';
+import { SigninComponent } from '../../signin/signin.component';
+
+const authGuardConfig: Partial<Route> = {
+  canActivate: [AuthGuard],
+  canActivateChild: [AuthGuard],
+  canDeactivate: [AuthGuard],
+  canLoad: [AuthGuard],
+};
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +48,7 @@ export class RoutingService implements OnDestroy {
   private buildRouteFromConfig(config: ConfigInterface): Routes {
     return [
       { path: '', component: HomeComponent },
+      { path: 'sign-in', component: SigninComponent },
       ...config.areas.map(area => this.mapAreaToRoute(area)),
     ];
   }
@@ -48,8 +58,9 @@ export class RoutingService implements OnDestroy {
       path: area.alias,
       children: [
         { path: '', redirectTo: '../', pathMatch: 'full' },
-        ...area.sections.map(section => this.mapSectionToRoute(section))
+        ...area.sections.map(section => this.mapSectionToRoute(section)),
       ],
+      ...authGuardConfig
     };
   }
 
