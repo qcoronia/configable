@@ -1,0 +1,23 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+
+  .signin-form {
+    padding: 30px;
+
+    .mat-divider {
+      margin-bottom: 15px;
+    }
+
+    .form-action-buttons > button {
+      width: 100%;
+    }
+
+    .or-label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+  }
+}

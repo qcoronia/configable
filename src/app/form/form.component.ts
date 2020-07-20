@@ -63,7 +63,6 @@ export class FormComponent implements OnInit {
   }
 
   public submitForm() {
-    console.warn('asdasd');
     of(this.form.getRawValue()).pipe(
       switchMap(formValue => {
         if (this.isCreateMode) {
