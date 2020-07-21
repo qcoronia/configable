@@ -44,7 +44,7 @@ export class NavigationComponent {
     this.authService.logout().pipe(
       take(1),
       tap(e => console.warn('navigating from nav')),
-    ).subscribe(isSignedIn => this.routingService.navigateToSignIn());
+    ).subscribe(isSignedIn => this.routingService.navigateToSignUp());
   }
 
 }

@@ -11,7 +11,8 @@ import { HomeComponent } from '../../home/home.component';
 import { FormComponent } from '../../form/form.component';
 import { ReplaySubject, Subscription } from 'rxjs';
 import { AuthGuard } from '../auth/auth.guard';
-import { SigninComponent } from '../../signin/signin.component';
+import { SignupComponent } from '../../signup/signup.component';
+import { LoginComponent } from '../../login/login.component';
 
 const authGuardConfig: Partial<Route> = {
   canActivate: [AuthGuard],
@@ -48,14 +49,19 @@ export class RoutingService implements OnDestroy {
     this.router.navigate(['/']);
   }
 
-  public navigateToSignIn() {
+  public navigateToSignUp() {
     this.router.navigate(['/sign-in']);
+  }
+
+  public navigateToLogIn() {
+    this.router.navigate(['/log-in']);
   }
 
   private buildRouteFromConfig(config: ConfigInterface): Routes {
     return [
       { path: '', component: HomeComponent },
-      { path: 'sign-in', component: SigninComponent },
+      { path: 'sign-in', component: SignupComponent },
+      { path: 'log-in', component: LoginComponent },
       ...config.areas.map(area => this.mapAreaToRoute(area)),
     ];
   }

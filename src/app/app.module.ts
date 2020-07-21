@@ -25,8 +25,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { SigninComponent } from './signin/signin.component';
+import { SignupComponent } from './signup/signup.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { MatMenuModule } from '@angular/material/menu';
     HomeComponent,
     TableComponent,
     FormComponent,
-    SigninComponent
+    SignupComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

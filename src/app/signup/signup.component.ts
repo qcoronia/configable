@@ -6,11 +6,11 @@ import { distinctUntilChanged, takeWhile, skipWhile, take, tap } from 'rxjs/oper
 import { RoutingService } from '../core/routing/routing.service';
 
 @Component({
-  selector: 'app-signin',
-  templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.scss']
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.scss']
 })
-export class SigninComponent implements OnInit {
+export class SignupComponent implements OnInit {
 
   public form: FormGroup;
 
@@ -28,10 +28,9 @@ export class SigninComponent implements OnInit {
   }
 
   public submitForm() {
-    this.authService.signIn(this.form.getRawValue()).pipe(
+    this.authService.signUp(this.form.getRawValue()).pipe(
       take(1),
-      tap(e => console.warn('navigating from form')),
-    ).subscribe(isSignedIn => this.router.navigate(['/']));
+    ).subscribe(isSignedUp => this.router.navigate(['/']));
   }
 
 }
