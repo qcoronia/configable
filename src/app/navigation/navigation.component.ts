@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
-import { map, shareReplay, take } from 'rxjs/operators';
+import { map, shareReplay, take, filter, switchMap, tap } from 'rxjs/operators';
 import { ConfigService } from '../core/configuration/config.service';
 import { AreaInterface } from '../core/models/area.interface';
 import { RoutingService } from '../core/routing/routing.service';
@@ -38,6 +38,13 @@ export class NavigationComponent {
     private routingService: RoutingService,
     public authService: AuthService,
     public appStateService: AppStateService) {
+  }
+
+  public logout() {
+    this.authService.logout().pipe(
+      take(1),
+      tap(e => console.warn('navigating from nav')),
+    ).subscribe(isSignedIn => this.routingService.navigateToSignIn());
   }
 
 }

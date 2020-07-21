@@ -24,7 +24,6 @@ const authGuardConfig: Partial<Route> = {
   providedIn: 'root'
 })
 export class RoutingService implements OnDestroy {
-
   public routeUpdates$: Subscription;
 
   constructor(
@@ -43,6 +42,14 @@ export class RoutingService implements OnDestroy {
     const routes = this.buildRouteFromConfig(config);
     this.router.resetConfig(routes);
     this.router.initialNavigation();
+  }
+
+  public navigateToHome() {
+    this.router.navigate(['/']);
+  }
+
+  public navigateToSignIn() {
+    this.router.navigate(['/sign-in']);
   }
 
   private buildRouteFromConfig(config: ConfigInterface): Routes {

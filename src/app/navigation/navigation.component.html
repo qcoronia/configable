@@ -6,7 +6,7 @@
     <mat-toolbar>{{appName$ | async}}</mat-toolbar>
     <mat-nav-list>
       <mat-accordion>
-        <ng-template *ngIf="authService.isSignedIn$ | async">
+        <ng-container *ngIf="authService.isSignedIn$ | async">
           <mat-expansion-panel *ngFor="let area of areas$ | async">
             <mat-expansion-panel-header>
               <mat-panel-title>
@@ -17,7 +17,7 @@
               <a mat-list-item [routerLink]="[area.alias, section.alias]">{{section.sectionName}}</a>
             </ng-container>
           </mat-expansion-panel>
-        </ng-template>
+        </ng-container>
       </mat-accordion>
     </mat-nav-list>
   </mat-sidenav>
@@ -36,10 +36,9 @@
       <div class="toolbar-actions">
         <ng-container *ngIf="authService.isSignedIn$ | async else signInButton">
           <button mat-button [matMenuTriggerFor]="profileMenu">{{authService.userDisplayName$ | async}}</button>
-            <mat-menu #profileMenu="matMenu">
-              <button mat-menu-item>Item 1</button>
-              <button mat-menu-item>Item 2</button>
-            </mat-menu>
+          <mat-menu #profileMenu="matMenu">
+            <button mat-menu-item (click)="logout()">Log out</button>
+          </mat-menu>
         </ng-container>
         <ng-template #signInButton>
           <button mat-raised-button color="accent" [routerLink]="['sign-in']">Sign in</button>
