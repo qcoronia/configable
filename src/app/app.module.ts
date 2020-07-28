@@ -28,6 +28,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SignupComponent } from './signup/signup.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { LoginComponent } from './login/login.component';
+import { ComponentsModule } from './core/components/components.module';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { LoginComponent } from './login/login.component';
     MatCheckboxModule,
     MatSnackBarModule,
     MatMenuModule,
+    ComponentsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

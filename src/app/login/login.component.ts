@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from '../core/auth/auth.service';
 import { take, tap } from 'rxjs/operators';
+import { DialogComponent, DialogData } from '../core/components/dialog/dialog.component';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +18,8 @@ export class LoginComponent {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+    private dialog: MatDialog) {
     this.form = formBuilder.group({
       username: [null],
       password: [null],
@@ -26,7 +29,17 @@ export class LoginComponent {
   public submitForm() {
     this.authService.logIn(this.form.getRawValue()).pipe(
       take(1),
-    ).subscribe(isLoggedIn => this.router.navigate(['/']));
+    ).subscribe(isLoggedIn => {
+      if (isLoggedIn) {
+        this.router.navigate(['/']);
+      } else {
+        this.dialog.open(DialogComponent, {
+          data: {
+            message: 'Invalid username or password.',
+          } as DialogData,
+        });
+      }
+    });
   }
 
 }
