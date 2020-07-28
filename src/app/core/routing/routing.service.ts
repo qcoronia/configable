@@ -50,7 +50,7 @@ export class RoutingService implements OnDestroy {
   }
 
   public navigateToSignUp() {
-    this.router.navigate(['/sign-in']);
+    this.router.navigate(['/sign-up']);
   }
 
   public navigateToLogIn() {
@@ -60,7 +60,7 @@ export class RoutingService implements OnDestroy {
   private buildRouteFromConfig(config: ConfigInterface): Routes {
     return [
       { path: '', component: HomeComponent },
-      { path: 'sign-in', component: SignupComponent },
+      { path: 'sign-up', component: SignupComponent },
       { path: 'log-in', component: LoginComponent },
       ...config.areas.map(area => this.mapAreaToRoute(area)),
     ];

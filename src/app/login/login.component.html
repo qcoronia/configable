@@ -1,5 +1,5 @@
 <div class="wrapper">
-  <div class="signin-form">
+  <div class="login-form">
     <form [formGroup]="form" (submit)="submitForm()">
       <mat-form-field class="full-width">
         <mat-label>Username</mat-label>
@@ -16,7 +16,7 @@
       </div>
       <label class="or-label">or</label>
       <div class="form-action-buttons">
-        <button mat-raised-button color="accent" type="button" [routerLink]="['../sign-in']">Create Account</button>
+        <a mat-button [routerLink]="['../sign-up']">Create New Account</a>
       </div>
     </form>
   </div>

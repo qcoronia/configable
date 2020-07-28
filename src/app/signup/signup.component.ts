@@ -30,7 +30,7 @@ export class SignupComponent implements OnInit {
   public submitForm() {
     this.authService.signUp(this.form.getRawValue()).pipe(
       take(1),
-    ).subscribe(isSignedUp => this.router.navigate(['/']));
+    ).subscribe(isLoggedIn => this.router.navigate(['/']));
   }
 
 }

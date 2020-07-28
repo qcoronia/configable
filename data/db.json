@@ -1,4 +1,11 @@
 {
+  "users": [
+    {
+      "id": 1,
+      "username": "sample@user.com",
+      "password": "sample"
+    }
+  ],
   "elements": [
     {
       "id": 1,
