@@ -14,6 +14,8 @@ export class AuthService {
   public isLoggedIn$: ReplaySubject<boolean>;
   public userDisplayName$: ReplaySubject<string>;
 
+  public authEnabled: boolean;
+
   private authUrl: string;
   private authEntity: string;
 
@@ -25,11 +27,12 @@ export class AuthService {
     this.userDisplayName$ = new ReplaySubject<string>();
 
     this.configService.config$.pipe(
-      tap(config => this.authUrl = config.authUrl),
-      tap(config => this.authEntity = config.authEntity),
+      tap(config => this.authEnabled = config.auth.enabled),
+      tap(config => this.authUrl = config.auth.url),
+      tap(config => this.authEntity = config.auth.entityName),
       take(1),
     ).subscribe(config => { });
-    this.isLoggedIn$.next(!!sessionStorage.getItem('username'));
+    this.isLoggedIn$.next(!this.authEnabled || (this.authEnabled && !!sessionStorage.getItem('username')));
     this.userDisplayName$.next(sessionStorage.getItem('username'));
   }
 

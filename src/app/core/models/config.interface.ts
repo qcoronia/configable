@@ -1,9 +1,9 @@
 import { AreaInterface } from './area.interface';
+import { AuthInterface } from './auth.interface';
 
 export interface ConfigInterface {
   appName: string;
   apiUrl: string;
-  authUrl: string;
-  authEntity: string;
+  auth: AuthInterface;
   areas: AreaInterface[];
 }
