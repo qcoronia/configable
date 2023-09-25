@@ -3,7 +3,7 @@ import { FormInterface } from '../core/models/form.interface';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppStateService } from '../core/app-state/app-state.service';
 import { ApiService } from '../core/api/api.service';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { tap, take, switchMap, delay } from 'rxjs/operators';
 import { of, iif, from } from 'rxjs';
 
@@ -18,14 +18,14 @@ export class FormComponent implements OnInit {
 
   public formConfig: FormInterface;
 
-  public form: FormGroup;
+  public form: UntypedFormGroup;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private appStateService: AppStateService,
     private api: ApiService,
-    private formBuilder: FormBuilder) {
+    private formBuilder: UntypedFormBuilder) {
     this.isCreateMode = true;
 
     this.formConfig = this.route.snapshot.data as FormInterface;

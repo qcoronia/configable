@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../core/auth/auth.service';
 import { distinctUntilChanged, takeWhile, skipWhile, take, tap } from 'rxjs/operators';
@@ -12,12 +12,12 @@ import { RoutingService } from '../core/routing/routing.service';
 })
 export class SignupComponent implements OnInit {
 
-  public form: FormGroup;
+  public form: UntypedFormGroup;
 
   constructor(
     private router: Router,
     private authService: AuthService,
-    private formBuilder: FormBuilder) {
+    private formBuilder: UntypedFormBuilder) {
     this.form = formBuilder.group({
       username: [null],
       password: [null],

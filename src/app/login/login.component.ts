@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from '../core/auth/auth.service';
@@ -13,12 +13,12 @@ import { DialogComponent, DialogData } from '../core/components/dialog/dialog.co
 })
 export class LoginComponent {
 
-  public form: FormGroup;
+  public form: UntypedFormGroup;
 
   constructor(
     private router: Router,
     private authService: AuthService,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private dialog: MatDialog) {
     this.form = formBuilder.group({
       username: [null],
