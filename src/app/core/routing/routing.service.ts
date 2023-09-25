@@ -1,5 +1,5 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { Router, Route, Routes } from '@angular/router';
+import { Router, Route, Routes, ExtraOptions } from '@angular/router';
 import { ConfigService } from '../configuration/config.service';
 import { tap, take, distinctUntilChanged } from 'rxjs/operators';
 import { ConfigInterface } from '../models/config.interface';

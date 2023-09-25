@@ -12,7 +12,7 @@ const routes: Routes = [
 ];
 
 const routeOptions: ExtraOptions = {
-  initialNavigation: false,
+  initialNavigation: 'disabled',
 };
 
 @NgModule({

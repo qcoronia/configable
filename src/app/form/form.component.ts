@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormInterface } from '../core/models/form.interface';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, ExtraOptions } from '@angular/router';
 import { AppStateService } from '../core/app-state/app-state.service';
 import { ApiService } from '../core/api/api.service';
 import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';

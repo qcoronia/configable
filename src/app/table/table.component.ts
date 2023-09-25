@@ -5,7 +5,7 @@ import { MatLegacyTable as MatTable } from '@angular/material/legacy-table';
 import { MatLegacyCheckboxChange as MatCheckboxChange } from '@angular/material/legacy-checkbox';
 import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 import { TableDataSource, TableItem } from './table-datasource';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ExtraOptions } from '@angular/router';
 import { AppStateService } from '../core/app-state/app-state.service';
 import { ListInterface } from '../core/models/list.interface';
 import { ApiService } from '../core/api/api.service';

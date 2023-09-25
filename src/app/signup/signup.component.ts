@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ExtraOptions } from '@angular/router';
 import { AuthService } from '../core/auth/auth.service';
 import { distinctUntilChanged, takeWhile, skipWhile, take, tap } from 'rxjs/operators';
 import { RoutingService } from '../core/routing/routing.service';
