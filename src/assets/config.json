@@ -1,9 +1,9 @@
 {
   "appName":  "Configable",
-  "apiUrl": "http://localhost:3000",
+  "apiUrl": "http://localhost:7000",
   "auth": {
     "enabled":  false,
-    "url": "http://localhost:3000",
+    "url": "http://localhost:7000",
     "entityName": "users"
   },
   "areas": [
