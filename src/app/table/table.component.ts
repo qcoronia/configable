@@ -1,9 +1,9 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTable } from '@angular/material/table';
-import { MatCheckboxChange } from '@angular/material/checkbox';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatLegacyTable as MatTable } from '@angular/material/legacy-table';
+import { MatLegacyCheckboxChange as MatCheckboxChange } from '@angular/material/legacy-checkbox';
+import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 import { TableDataSource, TableItem } from './table-datasource';
 import { ActivatedRoute } from '@angular/router';
 import { AppStateService } from '../core/app-state/app-state.service';
