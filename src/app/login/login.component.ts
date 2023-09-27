@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { Router, ExtraOptions } from '@angular/router';
 import { AuthService } from '../core/auth/auth.service';
 import { take, tap } from 'rxjs/operators';

@@ -1,5 +1,5 @@
 import { DataSource } from '@angular/cdk/collections';
-import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map, distinctUntilChanged, tap, switchMap } from 'rxjs/operators';
 import { Observable, of as observableOf, merge, Subscription, iif, ReplaySubject, BehaviorSubject, Subject } from 'rxjs';
