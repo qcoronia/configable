@@ -5,7 +5,7 @@ import { MatTable } from '@angular/material/table';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TableDataSource, TableItem } from './table-datasource';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ExtraOptions } from '@angular/router';
 import { AppStateService } from '../core/app-state/app-state.service';
 import { ListInterface } from '../core/models/list.interface';
 import { ApiService } from '../core/api/api.service';
