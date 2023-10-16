@@ -1,5 +1,5 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { Router, Route, Routes, ExtraOptions } from '@angular/router';
+import { Router, Route, Routes, ExtraOptions, mapToCanActivate, mapToCanActivateChild, mapToCanDeactivate, mapToCanMatch } from '@angular/router';
 import { ConfigService } from '../configuration/config.service';
 import { tap, take, distinctUntilChanged } from 'rxjs/operators';
 import { ConfigInterface } from '../models/config.interface';
@@ -15,10 +15,10 @@ import { SignupComponent } from '../../signup/signup.component';
 import { LoginComponent } from '../../login/login.component';
 
 const authGuardConfig: Partial<Route> = {
-  canActivate: [AuthGuard],
-  canActivateChild: [AuthGuard],
-  canDeactivate: [AuthGuard],
-  canLoad: [AuthGuard],
+  canActivate: mapToCanActivate([AuthGuard]),
+  canActivateChild: mapToCanActivateChild([AuthGuard]),
+  canDeactivate: mapToCanDeactivate([AuthGuard]),
+  canMatch: mapToCanMatch([AuthGuard]),
 };
 
 @Injectable({

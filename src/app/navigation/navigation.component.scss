@@ -19,3 +19,11 @@
 .toolbar-spacer {
   flex: 1 1 auto;
 }
+
+:host ::ng-deep .mat-expansion-panel-body {
+  padding: 0px;
+
+  .mdc-list-item__content {
+    padding-left: 16px;
+  }
+}
