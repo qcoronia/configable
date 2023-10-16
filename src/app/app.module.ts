@@ -29,6 +29,9 @@ import { SignupComponent } from './signup/signup.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { LoginComponent } from './login/login.component';
 import { ComponentsModule } from './core/components/components.module';
+import { NgxIndexedDBModule } from 'ngx-indexed-db';
+import { DB_SCHEMA } from './core/models/database-schema.modal';
+import { MonacoEditorModule } from 'ngx-monaco-editor';
 
 @NgModule({
   declarations: [
@@ -64,6 +67,8 @@ import { ComponentsModule } from './core/components/components.module';
     MatSnackBarModule,
     MatMenuModule,
     ComponentsModule,
+    NgxIndexedDBModule.forRoot(DB_SCHEMA),
+    MonacoEditorModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

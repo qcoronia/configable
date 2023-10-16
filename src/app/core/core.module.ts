@@ -23,7 +23,7 @@ import { AuthService } from './auth.service';
     ConfigService,
     AppStateService,
     ApiService,
-    AuthService
+    AuthService,
   ]
 })
 export class CoreModule { }

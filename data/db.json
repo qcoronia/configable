@@ -87,5 +87,31 @@
       "id": 20,
       "name": "Calcium"
     }
+  ],
+  "cars": [
+    {
+      "id": 1,
+      "make": "Toyota",
+      "model": "Celica",
+      "price": 35000
+    },
+    {
+      "id": 2,
+      "make": "Ford",
+      "model": "Focus",
+      "price": 32000
+    },
+    {
+      "id": 3,
+      "make": "Porsche",
+      "model": "Carerra",
+      "price": 72000
+    },
+    {
+      "id": 4,
+      "make": "Acura",
+      "model": "Integra Type-R",
+      "price": "52000"
+    }
   ]
 }

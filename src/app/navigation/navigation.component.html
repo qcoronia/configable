@@ -7,7 +7,7 @@
     <mat-nav-list>
       <mat-accordion>
         <ng-container *ngIf="!authService.authEnabled || (authService.authEnabled && authService.isLoggedIn$ | async)">
-          <mat-expansion-panel *ngFor="let area of areas$ | async">
+          <mat-expansion-panel class="mat-elevation-z0" *ngFor="let area of areas$ | async">
             <mat-expansion-panel-header>
               <mat-panel-title>
                 {{area.areaName}}

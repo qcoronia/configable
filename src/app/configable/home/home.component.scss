@@ -1,0 +1,19 @@
+form.toolbar {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.editor {
+    height: 100%;
+
+    ngx-monaco-editor {
+        height: 100%;
+
+        .editor-container {
+            height: calc(100vh + 100px);
+        }
+    }
+}

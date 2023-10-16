@@ -1,5 +1,5 @@
 {
-  "appName":  "Configable",
+  "appName":  "Configable Sample",
   "apiUrl": "http://localhost:7000",
   "auth": {
     "enabled":  false,
@@ -50,6 +50,186 @@
                 "alias": "name",
                 "isReadOnly": false,
                 "dataType": "string"
+              }
+            ]
+          }
+        },
+        {
+          "sectionName": "Cars",
+          "alias": "cars",
+          "list":  {
+            "listName": "Cars",
+            "dataSourceUrl": "/cars",
+            "deleteUrl": "/cars/{id}",
+            "idAlias": "id",
+            "columns": [
+              {
+                "columnName": "Id",
+                "alias": "id",
+                "dataType": "number"
+              },
+              {
+                "columnName": "Make",
+                "alias": "make",
+                "dataType": "string"
+              },
+              {
+                "columnName": "Model",
+                "alias": "model",
+                "dataType": "string"
+              },
+              {
+                "columnName": "Price",
+                "alias": "price",
+                "dataType": "number"
+              }
+            ]
+          },
+          "form":  {
+            "formName": "Car Form",
+            "dataSourceUrl": "/cars/{id}",
+            "createUrl": "/cars",
+            "updateUrl": "/cars/{id}",
+            "idAlias": "id",
+            "formControls": [
+              {
+                "fieldName": "Id",
+                "alias": "id",
+                "isReadOnly": true,
+                "dataType": "number"
+              },
+              {
+                "fieldName": "Make",
+                "alias": "make",
+                "isReadOnly": false,
+                "dataType": "string"
+              },
+              {
+                "fieldName": "Model",
+                "alias": "model",
+                "isReadOnly": false,
+                "dataType": "string"
+              },
+              {
+                "fieldName": "Price",
+                "alias": "price",
+                "isReadOnly": false,
+                "dataType": "number"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    
+    {
+      "areaName": "Sample Pages 2",
+      "alias": "sample-pages",
+      "sections":  [
+        {
+          "sectionName": "Elements",
+          "alias": "elements",
+          "list":  {
+            "listName": "Elements",
+            "dataSourceUrl": "/elements",
+            "deleteUrl": "/elements/{id}",
+            "idAlias": "id",
+            "columns": [
+              {
+                "columnName": "Id",
+                "alias": "id",
+                "dataType": "number"
+              },
+              {
+                "columnName": "Name",
+                "alias": "name",
+                "dataType": "string"
+              }
+            ]
+          },
+          "form":  {
+            "formName": "Element Form",
+            "dataSourceUrl": "/elements/{id}",
+            "createUrl": "/elements",
+            "updateUrl": "/elements/{id}",
+            "idAlias": "id",
+            "formControls": [
+              {
+                "fieldName": "Id",
+                "alias": "id",
+                "isReadOnly": true,
+                "dataType": "number"
+              },
+              {
+                "fieldName": "Name",
+                "alias": "name",
+                "isReadOnly": false,
+                "dataType": "string"
+              }
+            ]
+          }
+        },
+        {
+          "sectionName": "Cars",
+          "alias": "cars",
+          "list":  {
+            "listName": "Cars",
+            "dataSourceUrl": "/cars",
+            "deleteUrl": "/cars/{id}",
+            "idAlias": "id",
+            "columns": [
+              {
+                "columnName": "Id",
+                "alias": "id",
+                "dataType": "number"
+              },
+              {
+                "columnName": "Make",
+                "alias": "make",
+                "dataType": "string"
+              },
+              {
+                "columnName": "Model",
+                "alias": "model",
+                "dataType": "string"
+              },
+              {
+                "columnName": "Price",
+                "alias": "price",
+                "dataType": "number"
+              }
+            ]
+          },
+          "form":  {
+            "formName": "Car Form",
+            "dataSourceUrl": "/cars/{id}",
+            "createUrl": "/cars",
+            "updateUrl": "/cars/{id}",
+            "idAlias": "id",
+            "formControls": [
+              {
+                "fieldName": "Id",
+                "alias": "id",
+                "isReadOnly": true,
+                "dataType": "number"
+              },
+              {
+                "fieldName": "Make",
+                "alias": "make",
+                "isReadOnly": false,
+                "dataType": "string"
+              },
+              {
+                "fieldName": "Model",
+                "alias": "model",
+                "isReadOnly": false,
+                "dataType": "string"
+              },
+              {
+                "fieldName": "Price",
+                "alias": "price",
+                "isReadOnly": false,
+                "dataType": "number"
               }
             ]
           }

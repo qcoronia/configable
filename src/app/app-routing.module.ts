@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'sign-up', component: SignupComponent },
   { path: 'log-in', component: LoginComponent },
+  { path: 'configable', loadChildren: () => import('./configable/configable.module').then(m => m.ConfigableModule) },
 ];
 
 const routeOptions: ExtraOptions = {

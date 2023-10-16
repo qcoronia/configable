@@ -88,7 +88,7 @@ export class TableDataSource extends DataSource<TableItem> {
    * this would be replaced by requesting the appropriate data from the server.
    */
   private getFilteredData(filterValue: string, data: TableItem[]) {
-    return data.filter(e => Object.values(e).join('').includes(filterValue));
+    return data.filter(e => Object.values(e).join('').toLowerCase().includes(filterValue.toLowerCase()));
   }
 
   /**

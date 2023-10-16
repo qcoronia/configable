@@ -3,7 +3,6 @@ import { Router, Route, Routes, ExtraOptions } from '@angular/router';
 import { ConfigService } from '../configuration/config.service';
 import { tap, take, distinctUntilChanged } from 'rxjs/operators';
 import { ConfigInterface } from '../models/config.interface';
-import { AppComponent } from '../../app.component';
 import { TableComponent } from '../../table/table.component';
 import { AreaInterface } from '../models/area.interface';
 import { SectionInterface } from '../models/section.interface';
@@ -26,6 +25,16 @@ const authGuardConfig: Partial<Route> = {
 })
 export class RoutingService implements OnDestroy {
   public routeUpdates$: Subscription;
+
+  private systemRoutes: Routes = [
+    { path: '', component: HomeComponent },
+    { path: 'configable', loadChildren: () => import('../../configable/configable.module').then(m => m.ConfigableModule) },
+  ];
+
+  private authRoutes: Routes = [
+    { path: 'sign-up', component: SignupComponent },
+    { path: 'log-in', component: LoginComponent },
+  ];
 
   constructor(
     private configService: ConfigService,
@@ -59,9 +68,8 @@ export class RoutingService implements OnDestroy {
 
   private buildRouteFromConfig(config: ConfigInterface): Routes {
     return [
-      { path: '', component: HomeComponent },
-      { path: 'sign-up', component: SignupComponent },
-      { path: 'log-in', component: LoginComponent },
+      ...this.systemRoutes,
+      ...this.authRoutes,
       ...config.areas.map(area => this.mapAreaToRoute(area)),
     ];
   }

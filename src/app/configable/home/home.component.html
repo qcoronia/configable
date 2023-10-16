@@ -1,0 +1,24 @@
+<form [formGroup]="toolbar" class="toolbar">
+    <mat-form-field class="example-full-width">
+        <mat-label>Config</mat-label>
+        <input type="text"
+            placeholder="Pick one"
+            aria-label="Config"
+            matInput
+            formControlName="config"
+            [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of configOptions$ | async" [value]="option">
+            {{option}}
+        </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+    
+    <button mat-raised-button color="primary">
+        <mat-icon>save_as</mat-icon>
+        Save As
+    </button>
+</form>
+<div class="editor">
+    <ngx-monaco-editor [options]="editorOptions" [(ngModel)]="code"></ngx-monaco-editor>
+</div>
