@@ -27,8 +27,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SignupComponent } from './signup/signup.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatCardModule } from '@angular/material/card';
 import { LoginComponent } from './login/login.component';
 import { ComponentsModule } from './core/components/components.module';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { ComponentsModule } from './core/components/components.module';
     TableComponent,
     FormComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +66,7 @@ import { ComponentsModule } from './core/components/components.module';
     MatCheckboxModule,
     MatSnackBarModule,
     MatMenuModule,
+    MatCardModule,
     ComponentsModule,
   ],
   providers: [],

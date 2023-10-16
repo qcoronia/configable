@@ -1,0 +1,9 @@
+<h1>Welcome</h1>
+<div>
+    <button mat-raised-button (click)="fileInput.click()">Upload a JSON file</button>
+    <input type="file" (change)="onFileSelected($event)" #fileInput hidden />
+</div>
+<p>or</p>
+<div>
+    <button mat-raised-button (click)="loadSampleConfig()">Load the sample config</button>
+</div>

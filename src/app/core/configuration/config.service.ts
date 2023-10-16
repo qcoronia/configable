@@ -1,39 +1,44 @@
 import { Injectable } from '@angular/core';
-import { ReplaySubject, Observable } from 'rxjs';
+import { ReplaySubject, Observable, Subject } from 'rxjs';
 import { ConfigInterface } from '../models/config.interface';
 import { HttpClient } from '@angular/common/http';
-import { map, tap, take } from 'rxjs/operators';
+import { map, tap, take, switchMap, distinctUntilChanged } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ConfigService {
 
-  private configSource$: Observable<ConfigInterface>;
-  public config$: ReplaySubject<ConfigInterface>;
+  private configSource$: ReplaySubject<string>;
+  public config$: Observable<ConfigInterface>;
 
   constructor(
     private http: HttpClient
   ) {
-    this.config$ = new ReplaySubject<ConfigInterface>(1);
-    this.configSource$ = this.http.get<ConfigInterface>('assets/config.json', {
+    this.configSource$ = new ReplaySubject<string>(1);
+    this.config$ = this.configSource$.pipe(
+      distinctUntilChanged(),
+      map(configSource => JSON.parse(configSource) as ConfigInterface),
+    );
+  }
+
+  public load(config: string) {
+    localStorage.setItem('config', config);
+    this.configSource$.next(config);
+  }
+
+  public reload() {
+    const config = localStorage.getItem('config');
+    this.load(config);
+  }
+
+  public loadFromUrl(url: string) {
+    this.http.get<ConfigInterface>(url, {
       observe: 'response',
       responseType: 'json'
     }).pipe(
       map(res => res.body),
-      tap(body => this.config$.next(body)),
-    );
-
-    this.load();
-  }
-
-  private load() {
-    this.configSource$.pipe(
       take(1),
-    ).subscribe(res => { });
-  }
-
-  public reload() {
-    this.load();
+    ).subscribe(body => this.load(JSON.stringify(body)));
   }
 }

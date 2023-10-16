@@ -1,5 +1,10 @@
-<app-navigation>
-  <div class="main-content">
-    <router-outlet></router-outlet>
-  </div>
-</app-navigation>
+<ng-container *ngIf="hasConfig$ | async else welcome">
+  <app-navigation>
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </app-navigation>
+</ng-container>
+<ng-template #welcome>
+  <app-welcome></app-welcome>
+</ng-template>
