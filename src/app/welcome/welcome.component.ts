@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ConfigService } from '../core/configuration/config.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-welcome',
@@ -8,7 +9,12 @@ import { ConfigService } from '../core/configuration/config.service';
 })
 export class WelcomeComponent {
 
-  constructor(private configService: ConfigService) {
+  public loadFromUrlForm: FormGroup;
+
+  constructor(private configService: ConfigService, private formBuilder: FormBuilder) {
+    this.loadFromUrlForm = this.formBuilder.group({
+      url: ['']
+    });
   }
 
   public async onFileSelected(event: Event) {
@@ -16,6 +22,11 @@ export class WelcomeComponent {
     const file: File = (target.files as FileList)[0];
     const configContent = await file.text();
     this.configService.load(configContent);
+  }
+
+  public loadJsonFromUrl() {
+    const url = this.loadFromUrlForm.get('url')?.value;
+    this.configService.loadFromUrl(url);
   }
 
   public loadSampleConfig() {
