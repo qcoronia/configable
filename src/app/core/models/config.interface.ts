@@ -1,3 +1,4 @@
+import { JTDSchemaType } from 'ajv/dist/core';
 import { AreaInterface } from './area.interface';
 import { AuthInterface } from './auth.interface';
 

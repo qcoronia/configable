@@ -1,19 +1,33 @@
-<h1>Welcome</h1>
-<div>
-    <button mat-raised-button (click)="fileInput.click()">Upload a JSON file</button>
-    <input type="file" (change)="onFileSelected($event)" #fileInput hidden />
-</div>
-<p>or</p>
-<form [formGroup]="loadFromUrlForm" class="load-from-url-form">
-    <mat-card>
-        <mat-form-field subscriptSizing="dynamic">
-            <mat-label>Url</mat-label>
-            <input matInput type="url" formControlName="url" placeholder="Url"/>
-        </mat-form-field>
-        <button type="button" mat-raised-button (click)="loadJsonFromUrl()">Load JSON from URL</button>
-    </mat-card>
-</form>
-<p>or</p>
-<div>
-    <button mat-raised-button (click)="loadSampleConfig()">Load the sample config</button>
-</div>
+<h1>Configable</h1>
+<mat-card class="loading-options">
+    <mat-card-content>
+        <div>
+            <p>Upload a JSON file</p>
+            <button mat-raised-button color="primary" (click)="fileInput.click()">Choose</button>
+            <input type="file" (change)="onFileSelected($event)" #fileInput hidden />
+        </div>
+        <mat-divider [vertical]="true"></mat-divider>
+        <div>
+            <form [formGroup]="loadFromUrlForm" class="load-from-url-form">
+                <mat-form-field subscriptSizing="dynamic">
+                    <mat-label>Url</mat-label>
+                    <input matInput type="url" formControlName="url" placeholder="Url"/>
+                </mat-form-field>
+                <button type="button" mat-raised-button color="primary" (click)="loadJsonFromUrl()">Load JSON from URL</button>
+            </form>
+        </div>
+        <mat-divider [vertical]="true"></mat-divider>
+        <div>
+            <p>
+                Start with a <a mat-flat-button href="/assets/config.json" target="_blank">sample <mat-icon iconPositionEnd>open_in_new</mat-icon></a>
+            </p>
+            <button mat-raised-button color="primary" (click)="loadSampleConfig()">Load</button>
+        </div>
+    </mat-card-content>
+</mat-card>
+<p>
+    <a mat-flat-button href="/assets/config-schema.json" target="_blank">
+        View JSON schema
+        <mat-icon iconPositionEnd>open_in_new</mat-icon>
+    </a>
+</p>
