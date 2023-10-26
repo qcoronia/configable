@@ -20,6 +20,7 @@ $configable-warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $configable-theme: mat-light-theme($configable-primary, $configable-accent, $configable-warn);
+$configable-dark-theme: mat-dark-theme($configable-primary, $configable-accent, $configable-warn);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -30,3 +31,7 @@ $configable-theme: mat-light-theme($configable-primary, $configable-accent, $con
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.dark {
+    @include angular-material-theme($configable-dark-theme);
+}

@@ -12,12 +12,21 @@ export class AppComponent {
   title = 'configable';
 
   public hasConfig$: Observable<boolean> = this.configService.config$.pipe(map(config => !!config));
+  public theme: string = localStorage.getItem('theme') || 'light';
 
   constructor(private configService: ConfigService) {
     let configUrl = localStorage.getItem('config');
     if (!!configUrl) {
       this.configService.load(configUrl);
     }
+    
+    document.body.classList.add(this.theme);
+  }
 
+  public setTheme(theme: string) {
+    document.body.classList.remove(this.theme);
+    localStorage.setItem('theme', theme);
+    this.theme = theme;
+    document.body.classList.add(this.theme);
   }
 }
