@@ -1,4 +1,5 @@
 <h1>Configable</h1>
+<p>A basic CRUD web app configurable with JSON</p>
 <mat-card class="loading-options">
     <mat-card-content>
         <div>
@@ -9,12 +10,13 @@
         <mat-divider [vertical]="true"></mat-divider>
         <div>
             <form [formGroup]="loadFromUrlForm" class="load-from-url-form">
+                <p>Load JSON from URL</p>
                 <mat-form-field subscriptSizing="dynamic">
                     <mat-label>Url</mat-label>
                     <input matInput type="url" formControlName="url" placeholder="Url"/>
                 </mat-form-field>
-                <button type="button" mat-raised-button color="primary" (click)="loadJsonFromUrl()">Load JSON from URL</button>
             </form>
+            <button type="button" mat-raised-button color="primary" (click)="loadJsonFromUrl()">Fetch</button>
         </div>
         <mat-divider [vertical]="true"></mat-divider>
         <div>
