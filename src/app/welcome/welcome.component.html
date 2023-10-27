@@ -2,6 +2,15 @@
 <p>A basic CRUD web app configurable with JSON</p>
 <mat-card class="loading-options">
     <mat-card-content>
+        <mat-card-content>
+            Paste a JSON config, a URL to JSON config, or a JSON data
+        </mat-card-content>
+        <mat-divider>or</mat-divider>
+        <mat-card-footer>
+            <button mat-fab extended color="primary" (click)="loadSampleConfig()">Start with a sample <mat-icon iconPositionEnd>rocket_launch</mat-icon></button>
+        </mat-card-footer>
+    </mat-card-content>
+    <!-- <mat-card-content>
         <div>
             <p>Upload a JSON file</p>
             <button mat-raised-button color="primary" (click)="fileInput.click()">Choose</button>
@@ -25,11 +34,16 @@
             </p>
             <button mat-raised-button color="primary" (click)="loadSampleConfig()">Load</button>
         </div>
-    </mat-card-content>
+    </mat-card-content> -->
 </mat-card>
-<p>
-    <a mat-flat-button href="/assets/config-schema.json" target="_blank">
+<div class="links">
+    <a mat-button href="/assets/config.json" target="_blank">
+        View sample
+        <mat-icon iconPositionEnd>open_in_new</mat-icon>
+    </a>
+    <mat-divider [vertical]="true"></mat-divider>
+    <a mat-button href="/assets/config-schema.json" target="_blank">
         View JSON schema
         <mat-icon iconPositionEnd>open_in_new</mat-icon>
     </a>
-</p>
+</div>
