@@ -1,6 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { ConfigService } from '../core/configuration/config.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-welcome',
@@ -9,16 +9,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class WelcomeComponent {
 
-  public loadFromUrlForm: FormGroup;
-  public generateFromResponseForm: FormGroup;
-
-  constructor(private configService: ConfigService, private formBuilder: FormBuilder) {
-    this.loadFromUrlForm = this.formBuilder.group({
-      url: ['']
-    });
-    this.generateFromResponseForm = this.formBuilder.group({
-      url: ['']
-    });
+  constructor(private configService: ConfigService, private matSnackBar: MatSnackBar) {
   }
 
   public async onFileSelected(event: Event) {
@@ -26,11 +17,6 @@ export class WelcomeComponent {
     const file: File = (target.files as FileList)[0];
     const configContent = await file.text();
     this.configService.load(configContent);
-  }
-
-  public loadJsonFromUrl() {
-    const url = this.loadFromUrlForm.get('url')?.value;
-    this.configService.loadFromUrl(url);
   }
 
   public loadSampleConfig() {
@@ -43,7 +29,7 @@ export class WelcomeComponent {
     if (text.startsWith('{')) {
       this.configService.load(text);
     } else if (text.startsWith('[')) {
-      
+      this.matSnackBar.open('Invalid configuration: Expecting a JSON object', 'Dismiss', { duration: 5000 });
     } else if (text.startsWith('http')) {
       this.configService.loadFromUrl(text);
     }

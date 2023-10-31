@@ -1,4 +1,4 @@
-<ng-container *ngIf="hasConfig$ | async else welcome">
+<ng-container *ngIf="hasConfig() else welcome">
   <app-navigation>
     <div class="main-content">
       <router-outlet></router-outlet>
@@ -11,5 +11,5 @@
 <div class="site-options">
   <button mat-icon-button *ngIf="theme === 'dark'" (click)="setTheme('light')"><mat-icon>light_mode</mat-icon></button>
   <button mat-icon-button *ngIf="theme === 'light'" (click)="setTheme('dark')"><mat-icon>dark_mode</mat-icon></button>
-  <button mat-icon-button (click)="unloadConfig()"><mat-icon>tab_close</mat-icon></button>
+  <button mat-icon-button *ngIf="hasConfig()" (click)="unloadConfig()"><mat-icon>highlight_off</mat-icon></button>
 </div>

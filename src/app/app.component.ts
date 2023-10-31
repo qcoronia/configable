@@ -11,7 +11,6 @@ import { map } from 'rxjs/operators';
 export class AppComponent {
   title = 'configable';
 
-  public hasConfig$: Observable<boolean> = this.configService.config$.pipe(map(config => !!config));
   public theme: string = localStorage.getItem('theme') || 'light';
 
   constructor(private configService: ConfigService) {
@@ -33,5 +32,9 @@ export class AppComponent {
   public unloadConfig() {
     localStorage.removeItem('config');
     window.location.reload();
+  }
+
+  public hasConfig(): boolean {
+    return localStorage.getItem('config') !== null;
   }
 }

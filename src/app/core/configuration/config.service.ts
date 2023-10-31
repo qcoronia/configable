@@ -23,6 +23,7 @@ export class ConfigService {
     this.configSource$ = new ReplaySubject<string>(1);
     this.config$ = this.configSource$.pipe(
       distinctUntilChanged(),
+      filter(configSource => !!configSource),
       map(configSource => JSON.parse(configSource) as ConfigInterface),
     );
   }
