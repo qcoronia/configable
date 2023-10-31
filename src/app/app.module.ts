@@ -31,6 +31,7 @@ import { MatCardModule } from '@angular/material/card';
 import { LoginComponent } from './login/login.component';
 import { ComponentsModule } from './core/components/components.module';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
     MatSnackBarModule,
     MatMenuModule,
     MatCardModule,
+    MatTooltipModule,
     ComponentsModule,
   ],
   providers: [],

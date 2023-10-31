@@ -9,7 +9,7 @@
   <app-welcome></app-welcome>
 </ng-template>
 <div class="site-options">
-  <button mat-icon-button *ngIf="theme === 'dark'" (click)="setTheme('light')"><mat-icon>light_mode</mat-icon></button>
-  <button mat-icon-button *ngIf="theme === 'light'" (click)="setTheme('dark')"><mat-icon>dark_mode</mat-icon></button>
-  <button mat-icon-button *ngIf="hasConfig()" (click)="unloadConfig()"><mat-icon>highlight_off</mat-icon></button>
+  <button mat-icon-button *ngIf="theme === 'dark'" (click)="setTheme('light')" matTooltip="Light mode"><mat-icon>light_mode</mat-icon></button>
+  <button mat-icon-button *ngIf="theme === 'light'" (click)="setTheme('dark')" matTooltip="Dark mode"><mat-icon>dark_mode</mat-icon></button>
+  <button mat-icon-button *ngIf="hasConfig()" (click)="unloadConfig()" matTooltip="Unload config"><mat-icon>highlight_off</mat-icon></button>
 </div>

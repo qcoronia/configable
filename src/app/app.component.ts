@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { ConfigService } from './core/configuration/config.service';
-import { Observable, merge } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +9,7 @@ import { map } from 'rxjs/operators';
 export class AppComponent {
   title = 'configable';
 
-  public theme: string = localStorage.getItem('theme') || 'light';
+  public theme: string = localStorage.getItem('theme') || this.getPreferredColorScheme();
 
   constructor(private configService: ConfigService) {
     let configUrl = localStorage.getItem('config');
@@ -27,6 +25,18 @@ export class AppComponent {
     localStorage.setItem('theme', theme);
     this.theme = theme;
     document.body.classList.add(this.theme);
+  }
+  
+  public getPreferredColorScheme() {
+    if (window.matchMedia) {
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+      } else {
+        return 'light';
+      }
+    }
+
+    return 'light';
   }
 
   public unloadConfig() {
