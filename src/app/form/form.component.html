@@ -3,7 +3,8 @@
     <ng-container *ngFor="let formControl of formConfig.formControls">
       <mat-form-field class="full-width">
         <mat-label>{{formControl.fieldName}}</mat-label>
-        <input matInput placeholder="" [formControlName]="formControl.alias">
+        <input matInput placeholder="" [formControlName]="formControl.alias" [readonly]="formControl.alias === formConfig.idAlias">
+        <mat-icon matSuffix *ngIf="formControl.alias === formConfig.idAlias">key</mat-icon>
       </mat-form-field>
     </ng-container>
     <mat-divider></mat-divider>
