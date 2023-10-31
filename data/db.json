@@ -87,5 +87,63 @@
       "id": 20,
       "name": "Calcium"
     }
+  ],
+  "containers": [
+    {
+      "id": 1,
+      "shelf": "#1",
+      "drawer": "#1",
+      "element": 7,
+      "dateStored": "2020-04-21T17:59:00.402Z"
+    },
+    {
+      "id": 2,
+      "shelf": "#1",
+      "drawer": "#2",
+      "element": 8,
+      "dateStored": "2012-07-03T22:17:42.043Z"
+    },
+    {
+      "id": 3,
+      "shelf": "#1",
+      "drawer": "#3",
+      "element": 9,
+      "dateStored": "2022-10-07T23:07:44.832Z"
+    },
+    {
+      "id": 4,
+      "shelf": "#1",
+      "drawer": "#4",
+      "element": 10,
+      "dateStored": "2013-02-12T19:46:41.752Z"
+    },
+    {
+      "id": 5,
+      "shelf": "#2",
+      "drawer": "#1",
+      "element": 11,
+      "dateStored": "2017-01-20T15:58:49.538Z"
+    },
+    {
+      "id": 6,
+      "shelf": "#2",
+      "drawer": "#2",
+      "element": 12,
+      "dateStored": "2016-11-21T08:48:11.609Z"
+    },
+    {
+      "id": 7,
+      "shelf": "#2",
+      "drawer": "#5",
+      "element": 13,
+      "dateStored": "2018-07-13T20:29:00.906Z"
+    },
+    {
+      "id": 8,
+      "shelf": "#3",
+      "drawer": "#2",
+      "element": 14,
+      "dateStored": "2014-08-11T14:49:46.251Z"
+    }
   ]
 }

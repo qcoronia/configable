@@ -5,4 +5,5 @@ export interface FormControlInterface {
   alias: string;
   isReadOnly: boolean;
   dataType: DataType;
+  referenceTo?: string;
 }

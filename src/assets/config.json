@@ -53,6 +53,84 @@
               }
             ]
           }
+        },
+        {
+          "sectionName": "Containers",
+          "alias": "containers",
+          "list":  {
+            "listName": "Containers",
+            "dataSourceUrl": "/containers",
+            "deleteUrl": "/containers/{id}",
+            "idAlias": "id",
+            "columns": [
+              {
+                "columnName": "Id",
+                "alias": "id",
+                "dataType": "number"
+              },
+              {
+                "columnName": "Shelf",
+                "alias": "shelf",
+                "dataType": "string"
+              },
+              {
+                "columnName": "Drawer",
+                "alias": "drawer",
+                "dataType": "string"
+              },
+              {
+                "columnName": "Element",
+                "alias": "element",
+                "dataType": "reference",
+                "referenceTo": "elements"
+              },
+              {
+                "columnName": "Date Stored",
+                "alias": "dateStored",
+                "dataType": "date"
+              }
+            ]
+          },
+          "form":  {
+            "formName": "Container Form",
+            "dataSourceUrl": "/containers/{id}",
+            "createUrl": "/containers",
+            "updateUrl": "/containers/{id}",
+            "idAlias": "id",
+            "formControls": [
+              {
+                "fieldName": "Id",
+                "alias": "id",
+                "isReadOnly": true,
+                "dataType": "number"
+              },
+              {
+                "fieldName": "Shelf",
+                "alias": "shelf",
+                "isReadOnly": false,
+                "dataType": "string"
+              },
+              {
+                "fieldName": "Drawer",
+                "alias": "drawer",
+                "isReadOnly": false,
+                "dataType": "string"
+              },
+              {
+                "fieldName": "Element",
+                "alias": "element",
+                "isReadOnly": false,
+                "dataType": "reference",
+                "referenceTo": "elements"
+              },
+              {
+                "fieldName": "Date Stored",
+                "alias": "dateStored",
+                "isReadOnly": false,
+                "dataType": "date"
+              }
+            ]
+          }
         }
       ]
     }

@@ -4,4 +4,5 @@ export interface ColumnInterface {
   columnName: string;
   alias: string;
   dataType: DataType;
+  referenceTo?: string;
 }
