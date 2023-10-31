@@ -29,4 +29,9 @@ export class AppComponent {
     this.theme = theme;
     document.body.classList.add(this.theme);
   }
+
+  public unloadConfig() {
+    localStorage.removeItem('config');
+    window.location.reload();
+  }
 }

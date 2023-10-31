@@ -32,7 +32,7 @@ export class ConfigService {
       take(1),
       tap(validationResult => {
         if (!validationResult.isValid) {
-          this.matSnackBar.open(`Invalid configuration: '${validationResult.errors}'`);
+          this.matSnackBar.open(`Invalid configuration: '${validationResult.errors}'`, 'Dismiss', { duration: 5000 });
         }
       }),
       filter(validationResult => validationResult.isValid),

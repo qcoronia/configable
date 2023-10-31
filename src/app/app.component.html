@@ -11,4 +11,5 @@
 <div class="site-options">
   <button mat-icon-button *ngIf="theme === 'dark'" (click)="setTheme('light')"><mat-icon>light_mode</mat-icon></button>
   <button mat-icon-button *ngIf="theme === 'light'" (click)="setTheme('dark')"><mat-icon>dark_mode</mat-icon></button>
+  <button mat-icon-button (click)="unloadConfig()"><mat-icon>tab_close</mat-icon></button>
 </div>

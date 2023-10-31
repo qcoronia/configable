@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { ConfigService } from '../core/configuration/config.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
@@ -10,9 +10,13 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class WelcomeComponent {
 
   public loadFromUrlForm: FormGroup;
+  public generateFromResponseForm: FormGroup;
 
   constructor(private configService: ConfigService, private formBuilder: FormBuilder) {
     this.loadFromUrlForm = this.formBuilder.group({
+      url: ['']
+    });
+    this.generateFromResponseForm = this.formBuilder.group({
       url: ['']
     });
   }
@@ -31,5 +35,17 @@ export class WelcomeComponent {
 
   public loadSampleConfig() {
     this.configService.loadFromUrl('assets/config.json');
+  }
+
+  @HostListener('paste', ['$event'])
+  public onPaste(event: any) {
+    const text = event.clipboardData.getData('text/plain');
+    if (text.startsWith('{')) {
+      this.configService.load(text);
+    } else if (text.startsWith('[')) {
+      
+    } else if (text.startsWith('http')) {
+      this.configService.loadFromUrl(text);
+    }
   }
 }

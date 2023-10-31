@@ -19,12 +19,19 @@
 .loading-options {
     mat-card-content {
         display: flex;
-        gap:1rem;
-
-        div {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
+        gap: 1rem;
+        flex-direction: column;
     }
+
+    mat-card-footer {
+        display: flex;
+        gap: 1rem;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+.links {
+    display: flex;
+    gap: 1rem;
 }
