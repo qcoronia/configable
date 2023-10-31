@@ -1,0 +1,62 @@
+{
+    "pos-products": [
+      {
+        "id": 1,
+        "name": "Laptop",
+        "price": 1099.99
+      },
+      {
+        "id": 2,
+        "name": "Smartphone",
+        "price": 699.99
+      },
+      {
+        "id": 3,
+        "name": "Printer",
+        "price": 249.99
+      },
+      {
+        "id": 10,
+        "name": "Headphones",
+        "price": 149.99
+      }
+    ],
+    "pos-transactions": [
+      {
+        "id": 1,
+        "product": "Laptop",
+        "quantity": 2,
+        "totalAmount": 2199.98
+      },
+      {
+        "id": 2,
+        "product": "Smartphone",
+        "quantity": 3,
+        "totalAmount": 2099.97
+      },
+      {
+        "id": 3,
+        "product": "Printer",
+        "quantity": 1,
+        "totalAmount": 249.99
+      }
+    ],
+    "pos-stock": [
+      {
+        "id": 1,
+        "name": "Laptop",
+        "quantity": 30
+      },
+      {
+        "id": 2,
+        "name": "Smartphone",
+        "quantity": 50
+      },
+      {
+        "id": 3,
+        "name": "Printer",
+        "quantity": 20
+      }
+    ]
+  }
+  

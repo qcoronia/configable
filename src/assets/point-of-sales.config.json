@@ -1,0 +1,197 @@
+{
+    "appName": "PointOfSale",
+    "apiUrl": "http://localhost:7200",
+    "auth": {
+      "enabled": false,
+      "url": "http://localhost:7200",
+      "entityName": "users"
+    },
+    "areas": [
+      {
+        "areaName": "Sales",
+        "alias": "sales",
+        "sections": [
+          {
+            "sectionName": "Products",
+            "alias": "products",
+            "list": {
+              "listName": "Products",
+              "dataSourceUrl": "/pos-products",
+              "deleteUrl": "/pos-products/{id}",
+              "idAlias": "id",
+              "columns": [
+                {
+                  "columnName": "Product ID",
+                  "alias": "id",
+                  "dataType": "number"
+                },
+                {
+                  "columnName": "Product Name",
+                  "alias": "name",
+                  "dataType": "string"
+                },
+                {
+                  "columnName": "Price",
+                  "alias": "price",
+                  "dataType": "number"
+                }
+              ]
+            },
+            "form": {
+              "formName": "Product Form",
+              "dataSourceUrl": "/pos-products/{id}",
+              "createUrl": "/pos-products",
+              "updateUrl": "/pos-products/{id}",
+              "idAlias": "id",
+              "formControls": [
+                {
+                  "fieldName": "Product ID",
+                  "alias": "id",
+                  "isReadOnly": true,
+                  "dataType": "number"
+                },
+                {
+                  "fieldName": "Product Name",
+                  "alias": "name",
+                  "isReadOnly": false,
+                  "dataType": "string"
+                },
+                {
+                  "fieldName": "Price",
+                  "alias": "price",
+                  "isReadOnly": false,
+                  "dataType": "number"
+                }
+              ]
+            }
+          },
+          {
+            "sectionName": "Transactions",
+            "alias": "transactions",
+            "list": {
+              "listName": "Transactions",
+              "dataSourceUrl": "/pos-transactions",
+              "deleteUrl": "/pos-transactions/{id}",
+              "idAlias": "id",
+              "columns": [
+                {
+                  "columnName": "Transaction ID",
+                  "alias": "id",
+                  "dataType": "number"
+                },
+                {
+                  "columnName": "Product",
+                  "alias": "product",
+                  "dataType": "string"
+                },
+                {
+                  "columnName": "Quantity",
+                  "alias": "quantity",
+                  "dataType": "number"
+                },
+                {
+                  "columnName": "Total Amount",
+                  "alias": "totalAmount",
+                  "dataType": "number"
+                }
+              ]
+            },
+            "form": {
+              "formName": "Transaction Form",
+              "dataSourceUrl": "/pos-transactions/{id}",
+              "createUrl": "/pos-transactions",
+              "updateUrl": "/pos-transactions/{id}",
+              "idAlias": "id",
+              "formControls": [
+                {
+                  "fieldName": "Transaction ID",
+                  "alias": "id",
+                  "isReadOnly": true,
+                  "dataType": "number"
+                },
+                {
+                  "fieldName": "Product",
+                  "alias": "product",
+                  "isReadOnly": false,
+                  "dataType": "string"
+                },
+                {
+                  "fieldName": "Quantity",
+                  "alias": "quantity",
+                  "isReadOnly": false,
+                  "dataType": "number"
+                },
+                {
+                  "fieldName": "Total Amount",
+                  "alias": "totalAmount",
+                  "isReadOnly": true,
+                  "dataType": "number"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "areaName": "Inventory",
+        "alias": "inventory",
+        "sections": [
+          {
+            "sectionName": "Stock",
+            "alias": "stock",
+            "list": {
+              "listName": "Stock",
+              "dataSourceUrl": "/pos-stock",
+              "deleteUrl": "/pos-stock/{id}",
+              "idAlias": "id",
+              "columns": [
+                {
+                  "columnName": "Product ID",
+                  "alias": "id",
+                  "dataType": "number"
+                },
+                {
+                  "columnName": "Product Name",
+                  "alias": "name",
+                  "dataType": "string"
+                },
+                {
+                  "columnName": "Quantity",
+                  "alias": "quantity",
+                  "dataType": "number"
+                }
+              ]
+            },
+            "form": {
+              "formName": "Stock Form",
+              "dataSourceUrl": "/pos-stock/{id}",
+              "createUrl": "/pos-transactions/{id}",
+              "updateUrl": "/pos-transactions/{id}",
+              "idAlias": "id",
+              "formControls": [
+                {
+                  "fieldName": "Product ID",
+                  "alias": "id",
+                  "isReadOnly": true,
+                  "dataType": "number"
+                },
+                {
+                  "fieldName": "Product Name",
+                  "alias": "name",
+                  "isReadOnly": false,
+                  "dataType": "string"
+                },
+                {
+                  "fieldName": "Quantity",
+                  "alias": "quantity",
+                  "isReadOnly": false,
+                  "dataType": "number"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+  

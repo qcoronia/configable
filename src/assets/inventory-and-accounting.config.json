@@ -1,0 +1,251 @@
+{
+    "appName": "InventoryAndAccounting",
+    "apiUrl": "http://localhost:7100",
+    "auth": {
+      "enabled": false,
+      "url": "http://localhost:7100",
+      "entityName": "users"
+    },
+    "areas": [
+      {
+        "areaName": "Inventory",
+        "alias": "inventory",
+        "sections": [
+          {
+            "sectionName": "Products",
+            "alias": "products",
+            "list": {
+              "listName": "Products",
+              "dataSourceUrl": "/inventory-products",
+              "deleteUrl": "/inventory-products/{id}",
+              "idAlias": "id",
+              "columns": [
+                {
+                  "columnName": "Product ID",
+                  "alias": "id",
+                  "dataType": "number"
+                },
+                {
+                  "columnName": "Product Name",
+                  "alias": "name",
+                  "dataType": "string"
+                },
+                {
+                  "columnName": "Quantity",
+                  "alias": "quantity",
+                  "dataType": "number"
+                },
+                {
+                  "columnName": "Price",
+                  "alias": "price",
+                  "dataType": "number"
+                }
+              ]
+            },
+            "form": {
+              "formName": "Product Form",
+              "dataSourceUrl": "/inventory-products/{id}",
+              "createUrl": "/inventory-products",
+              "updateUrl": "/inventory-products/{id}",
+              "idAlias": "id",
+              "formControls": [
+                {
+                  "fieldName": "Product ID",
+                  "alias": "id",
+                  "isReadOnly": true,
+                  "dataType": "number"
+                },
+                {
+                  "fieldName": "Product Name",
+                  "alias": "name",
+                  "isReadOnly": false,
+                  "dataType": "string"
+                },
+                {
+                  "fieldName": "Quantity",
+                  "alias": "quantity",
+                  "isReadOnly": false,
+                  "dataType": "number"
+                },
+                {
+                  "fieldName": "Price",
+                  "alias": "price",
+                  "isReadOnly": false,
+                  "dataType": "number"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "areaName": "Accounting",
+        "alias": "accounting",
+        "sections": [
+          {
+            "sectionName": "Transactions",
+            "alias": "transactions",
+            "list": {
+              "listName": "Transactions",
+              "dataSourceUrl": "/accounting-transactions",
+              "deleteUrl": "/accounting-transactions/{id}",
+              "idAlias": "id",
+              "columns": [
+                {
+                  "columnName": "Transaction ID",
+                  "alias": "id",
+                  "dataType": "number"
+                },
+                {
+                  "columnName": "Description",
+                  "alias": "description",
+                  "dataType": "string"
+                },
+                {
+                  "columnName": "Amount",
+                  "alias": "amount",
+                  "dataType": "number"
+                }
+              ]
+            },
+            "form": {
+              "formName": "Transaction Form",
+              "dataSourceUrl": "/accounting-transactions/{id}",
+              "createUrl": "/accounting-transactions",
+              "updateUrl": "/accounting-transactions/{id}",
+              "idAlias": "id",
+              "formControls": [
+                {
+                  "fieldName": "Transaction ID",
+                  "alias": "id",
+                  "isReadOnly": true,
+                  "dataType": "number"
+                },
+                {
+                  "fieldName": "Description",
+                  "alias": "description",
+                  "isReadOnly": false,
+                  "dataType": "string"
+                },
+                {
+                  "fieldName": "Amount",
+                  "alias": "amount",
+                  "isReadOnly": false,
+                  "dataType": "number"
+                }
+              ]
+            }
+          },
+          {
+            "sectionName": "Invoices",
+            "alias": "invoices",
+            "list": {
+              "listName": "Invoices",
+              "dataSourceUrl": "/accounting-invoices",
+              "deleteUrl": "/accounting-invoices/{id}",
+              "idAlias": "id",
+              "columns": [
+                {
+                  "columnName": "Invoice ID",
+                  "alias": "id",
+                  "dataType": "number"
+                },
+                {
+                  "columnName": "Description",
+                  "alias": "description",
+                  "dataType": "string"
+                },
+                {
+                  "columnName": "Amount",
+                  "alias": "amount",
+                  "dataType": "number"
+                }
+              ]
+            },
+            "form": {
+              "formName": "Invoice Form",
+              "dataSourceUrl": "/accounting-invoices/{id}",
+              "createUrl": "/accounting-invoices",
+              "updateUrl": "/accounting-invoices/{id}",
+              "idAlias": "id",
+              "formControls": [
+                {
+                  "fieldName": "Invoice ID",
+                  "alias": "id",
+                  "isReadOnly": true,
+                  "dataType": "number"
+                },
+                {
+                  "fieldName": "Description",
+                  "alias": "description",
+                  "isReadOnly": false,
+                  "dataType": "string"
+                },
+                {
+                  "fieldName": "Amount",
+                  "alias": "amount",
+                  "isReadOnly": false,
+                  "dataType": "number"
+                }
+              ]
+            }
+          },
+          {
+            "sectionName": "Bills",
+            "alias": "bills",
+            "list": {
+              "listName": "Bills",
+              "dataSourceUrl": "/accounting-bills",
+              "deleteUrl": "/accounting-bills/{id}",
+              "idAlias": "id",
+              "columns": [
+                {
+                  "columnName": "Bill ID",
+                  "alias": "id",
+                  "dataType": "number"
+                },
+                {
+                  "columnName": "Description",
+                  "alias": "description",
+                  "dataType": "string"
+                },
+                {
+                  "columnName": "Amount",
+                  "alias": "amount",
+                  "dataType": "number"
+                }
+              ]
+            },
+            "form": {
+              "formName": "Bill Form",
+              "dataSourceUrl": "/accounting-bills/{id}",
+              "createUrl": "/accounting-bills",
+              "updateUrl": "/accounting-bills/{id}",
+              "idAlias": "id",
+              "formControls": [
+                {
+                  "fieldName": "Bill ID",
+                  "alias": "id",
+                  "isReadOnly": true,
+                  "dataType": "number"
+                },
+                {
+                  "fieldName": "Description",
+                  "alias": "description",
+                  "isReadOnly": false,
+                  "dataType": "string"
+                },
+                {
+                  "fieldName": "Amount",
+                  "alias": "amount",
+                  "isReadOnly": false,
+                  "dataType": "number"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+  

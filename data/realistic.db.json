@@ -1,0 +1,94 @@
+{
+  "inventory-products": [
+    {
+      "id": 1,
+      "name": "Laptop",
+      "quantity": 50,
+      "price": 1099.99
+    },
+    {
+      "id": 2,
+      "name": "Smartphone",
+      "quantity": 100,
+      "price": 699.99
+    },
+    {
+      "id": 3,
+      "name": "Printer",
+      "quantity": 25,
+      "price": 249.99
+    },
+    {
+      "id": 50,
+      "name": "Headphones",
+      "quantity": 75,
+      "price": 149.99
+    }
+  ],
+  "accounting-transactions": [
+    {
+      "id": 1,
+      "description": "Sale of Laptops",
+      "amount": 54999.50
+    },
+    {
+      "id": 2,
+      "description": "Purchase of Smartphones",
+      "amount": -69999.00
+    },
+    {
+      "id": 3,
+      "description": "Sale of Printers",
+      "amount": 6249.75
+    },
+    {
+      "id": 50,
+      "description": "Purchase of Headphones",
+      "amount": -11249.25
+    }
+  ],
+  "accounting-invoices": [
+    {
+      "id": 1,
+      "description": "Invoice #1",
+      "amount": 1500.00
+    },
+    {
+      "id": 2,
+      "description": "Invoice #2",
+      "amount": 2800.50
+    },
+    {
+      "id": 3,
+      "description": "Invoice #3",
+      "amount": 500.25
+    },
+    {
+      "id": 50,
+      "description": "Invoice #50",
+      "amount": 750.99
+    }
+  ],
+  "accounting-bills": [
+    {
+      "id": 1,
+      "description": "Wholesale Electronics Supplier",
+      "amount": -80000.00
+    },
+    {
+      "id": 2,
+      "description": "Manufacturing Contract Payment",
+      "amount": -120500.00
+    },
+    {
+      "id": 3,
+      "description": "Business Property Lease",
+      "amount": -200025.00
+    },
+    {
+      "id": 50,
+      "description": "Raw Materials Supplier",
+      "amount": -5099.00
+    }
+  ]
+}
